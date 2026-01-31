@@ -1,0 +1,1940 @@
+<!DOCTYPE html>
+<!-- saved from url=(0023)https://maxforlive.com/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Max for Live Community Resource</title>
+    
+    <meta name="description" content="The Free Library of Max for Live Devices">
+    <meta name="keywords" content="Ableton, Cycling 74, Max, Max/MSP, Max for Live">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="https://maxforlive.com/favicon.png">
+    <link rel="stylesheet" href="./Max for Live Community Resource_files/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="./Max for Live Community Resource_files/styles.css">
+    <script type="text/javascript" src="./Max for Live Community Resource_files/global.js"></script>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header>
+    <!-- <div class="divider"></div> -->
+    <div class="wide-internal-header">
+        <div class="header-top">
+            <nav>
+                <ul class="header-navigation-start">
+                    <li><a href="https://maxforlive.com/index.php" id="headertitle">Max for Live</a></li>
+                    <li><a href="https://maxforlive.com/library/index.php">Library</a></li>
+                    <li><a href="https://maxforlive.com/help.php">Help</a></li>
+                                    </ul>
+            </nav>
+
+            <form class="search-form" name="form1" method="get" action="https://maxforlive.com/library/index.php" enctype="multipart/form-data">
+                <input type="hidden" name="by" value="any">
+                <button class="search-icon-container">
+                    <svg viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M10 6.5C10 8.433 8.433 10 6.5 10C4.567 10 3 8.433 3 6.5C3 4.567 4.567 3 6.5 3C8.433 3 10 4.567 10 6.5ZM9.30884 10.0159C8.53901 10.6318 7.56251 11 6.5 11C4.01472 11 2 8.98528 2 6.5C2 4.01472 4.01472 2 6.5 2C8.98528 2 11 4.01472 11 6.5C11 7.56251 10.6318 8.53901 10.0159 9.30884L12.8536 12.1464L12.1464 12.8536L9.30884 10.0159Z" fill="black"></path>
+                    </svg>
+                </button>
+                <input type="text" placeholder="Search" name="q" size="40">	
+            </form>
+            
+            <nav>
+                <ul class="header-navigation-end">
+                                    <li><a href="https://maxforlive.com/login.php" class="">Log in or register</a></li>
+                                </ul>
+            </nav>      
+        </div>
+
+        <nav class="category-navigation">
+            <a class="device-type-pill" href="https://maxforlive.com/library/index.php?type=instrument">Instruments</a>
+            <a class="device-type-pill" href="https://maxforlive.com/library/index.php?type=audio">Audio Effects</a>
+            <a class="device-type-pill" href="https://maxforlive.com/library/index.php?type=midi">MIDI Effects</a>
+            <a class="device-type-pill" href="https://maxforlive.com/library/index.php?type=midi-generators">MIDI Generators</a>
+            <a class="device-type-pill" href="https://maxforlive.com/library/index.php?type=midi-transformations">MIDI Transformations</a>
+        </nav>
+    </div>
+
+    <div class="narrow-internal-header">
+        <div class="top-row">
+            <a href="https://maxforlive.com/index.php" id="headertitle">Max for Live</a>
+            <input type="checkbox" id="header-toggle" style="display:none">
+            <label for="header-toggle" class="header-hamburger">
+                <svg class="icon icon-hamburger" width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 18L20 18"></path>
+                    <path d="M4 12L20 12"></path>
+                    <path d="M4 6L20 6"></path>
+                </svg>
+                <svg class="icon icon-x" width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 4L20 20"></path>
+                    <path d="M20 4L4 20"></path>
+                </svg>
+            </label>
+        </div>
+
+        <form id="searchbar" class="search-form" name="form1" method="get" action="https://maxforlive.com/library/index.php" enctype="multipart/form-data">
+            <input type="hidden" name="by" value="any">
+            <button class="search-icon-container">
+                <svg viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M10 6.5C10 8.433 8.433 10 6.5 10C4.567 10 3 8.433 3 6.5C3 4.567 4.567 3 6.5 3C8.433 3 10 4.567 10 6.5ZM9.30884 10.0159C8.53901 10.6318 7.56251 11 6.5 11C4.01472 11 2 8.98528 2 6.5C2 4.01472 4.01472 2 6.5 2C8.98528 2 11 4.01472 11 6.5C11 7.56251 10.6318 8.53901 10.0159 9.30884L12.8536 12.1464L12.1464 12.8536L9.30884 10.0159Z" fill="black"></path>
+                </svg>
+            </button>
+            <input type="text" placeholder="Search" name="q" size="40">	
+        </form>
+
+        <nav class="category-navigation">
+            <div class="categories">
+                <a class="device-type-pill" href="https://maxforlive.com/library/index.php?type=audio">Audio Effects</a>
+                <a class="device-type-pill" href="https://maxforlive.com/library/index.php?type=instrument">Instruments</a>
+                <a class="device-type-pill" href="https://maxforlive.com/library/index.php?type=midi">MIDI Effects</a>
+                <a class="device-type-pill" href="https://maxforlive.com/library/index.php?type=midi-generators">MIDI Generators</a>
+                <a class="device-type-pill" href="https://maxforlive.com/library/index.php?type=midi-transformations">MIDI Transformations</a>
+            </div>
+        </nav>
+
+        <div class="narrow-divider"></div>
+
+        <nav class="user-interactions">
+            <ul>
+                <li><a href="https://maxforlive.com/library/index.php?tag=all">Library</a></li>
+                <li><a href="https://maxforlive.com/help.php">Help</a></li>
+
+                                <li><a href="https://maxforlive.com/login.php" class="">Log in or register</a></li>
+                            </ul>
+        </nav>  
+    </div>
+</header>
+
+<script>
+    const hamburger = document.querySelector('.header-hamburger');
+    const narrowContainer = document.querySelector('.narrow-internal-header');
+    const headerToggle = document.getElementById('header-toggle');
+
+    const updateHeaderExpansion = () => {
+        if (headerToggle.checked) {
+            document.body.classList.add('no-scroll');
+        } else {
+            document.body.classList.remove('no-scroll');
+        }
+        
+        const narrowInternalHeader = document.querySelector('.narrow-internal-header');
+        narrowInternalHeader.style.height = headerToggle.checked ? '100vh' : 'auto';
+        Array.from(narrowInternalHeader.children).forEach(child => {
+            if (!Array.from(child.classList).includes('top-row')) {
+                child.style.visibility = headerToggle.checked ? 'visible' : 'hidden'
+                child.style.display =  headerToggle.checked ? 'flex' : 'none'
+            }
+        });
+    }
+
+    headerToggle.addEventListener('change', updateHeaderExpansion);
+
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 1100) {
+            headerToggle.checked = false
+            document.body.classList.remove('no-scroll')
+        } else {
+            updateHeaderExpansion()
+        }
+    });
+
+
+</script>
+
+<style>
+    .no-scroll {
+        overflow: hidden;
+        height: 100%;
+    }
+
+    .header-hamburger .icon-x {
+        display: none;
+    }
+
+    #header-toggle:checked ~ .header-hamburger .icon-hamburger {
+        display: none;
+    }
+
+    #header-toggle:checked ~ .header-hamburger .icon-x {
+        display: block;
+    }
+
+    .header-hamburger {
+        background: none;
+        border: none;
+        outline: none;
+    }
+
+    .header-hamburger:hover {
+        cursor: pointer;
+    }
+
+    .header-hamburger svg path {
+        stroke: white;
+        stroke-width: 2;
+        stroke-linecap: round
+    }
+
+    header {
+        position: sticky;
+        top: 0;
+        z-index: 99;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 1em;
+        background-color: #232323;
+        display: flex;
+        flex-direction: column;
+    }
+
+    header .wide-internal-header {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+        padding-left: 1em;
+        padding-right: 1em;
+    }
+
+    header .narrow-internal-header {
+        position: relative;
+        width: 100%;
+        display: none;
+        visibility: hidden;
+        flex-direction: column;
+        gap: 1em;
+        padding: 1em;
+    }
+
+    header .narrow-internal-header :not(.top-row):not(.narrow-divider) {
+        max-width: 386px;
+    }
+
+    .narrow-internal-header .top-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .narrow-internal-header .top-row svg {
+        vertical-align: middle;
+    }
+
+    .narrow-internal-header .search-form {
+        margin-top: 4em;
+        margin-bottom: 1em;
+    }
+
+    .narrow-internal-header .user-interactions a {
+        color: white;
+        font-size: 0.8rem;
+    }
+    
+    .category-navigation {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+        height: 60px;
+    }
+
+    .device-type-pill {
+        display: flex;
+        background-color: #424242;
+        border-radius: 0.25rem;
+        font-size: 0.75rem;
+        height: 30px;
+        padding: 1rem 0.8125rem !important;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .categories {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1em;
+    }
+
+    @media screen and (max-width: 1100px) {
+        header {
+            position: sticky;
+            z-index: 4;
+        }
+
+        header .wide-internal-header {
+            display: none;
+            visibility: hidden;
+        }
+
+        header .narrow-internal-header {
+            display: flex;
+            visibility: visible;
+        }
+
+        .category-navigation {
+            flex-direction: column;
+            height: auto;
+            justify-content: flex-start;
+            align-items: flex-start;
+            padding-top: 1em;
+        }
+    }
+
+    .category-navigation a{
+        color: #f5f5f5 !important;
+        font-size: 0.8rem !important;
+    }
+    .header-notice-wrapper {
+        display: flex;
+        background-color: #FBFFA7;
+        color: #000000;
+        width: 100%;
+        margin: 0;
+    }
+
+    .header-notice {
+        margin: 0 auto;
+        max-width: 1200px;
+        width: 100%;
+        font-size: 0.75rem;
+        font-weight: 500;
+        padding: 0 1em;
+        align-self: center;
+        justify-self: center;
+        text-align: center;
+    }
+
+    .header-notice a {
+        color: #FF5F00;
+    }
+
+    .divider {
+        position: absolute;
+        top: 60px;
+        height: 1px;
+        border-bottom: 1px solid #303030;
+        width: 100%;
+    }
+
+    .header-top {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0;
+        white-space: nowrap;
+        background-color: #232323;
+    }
+
+    .header-top nav {
+        flex-grow: 1;
+        max-height: 60px;
+        flex-basis: 0;
+    }
+
+    .header-top a, .header-top a:hover, .header-top a:visited, .header-top a:active {
+        font-size: 0.9rem;
+        color: #ffffff !important;
+    }
+
+    .header-top ul {
+        height: 45px;
+    }
+
+    .header-navigation-start, .header-navigation-end {
+        display: flex;
+        list-style: none;
+        gap: 1.5em;
+        margin: 0;
+
+    }
+
+    .wide-internal-header .header-navigation-start {
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+
+    .wide-internal-header .header-navigation-end {
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+
+    .narrow-internal-header .header-navigation-start {
+        flex-direction: column;
+    }
+
+    .narrow-internal-header .narrow-divider {
+        height: 1px;
+        border-bottom: 1px solid #303030;
+        width: 100%;
+        padding-top: 2em;
+    }
+
+    .header-navigation li {
+        margin-bottom: 0em;
+    }
+
+    #headertitle {
+        background-image: url(/images/m4l-web-icon.svg);
+        background-size: contain;
+        background-repeat: no-repeat;
+        display: block;
+        /* margin: 0 auto; */
+        text-indent: -9999px;
+        width: 110px;
+        height: 30px;
+    }
+
+    .search-form {
+        padding: 0;
+        margin: 0;
+        height: 1.8em;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        font-size: 1rem;
+    }
+
+    .search-form input {
+        height: 100%;
+        width: 100%;
+        border: none;
+        outline: none;
+        padding: 0 0.5em;
+        color: #f5f5f5;
+        background-color: #424242;
+        border-top-right-radius: 0.25rem;
+        border-bottom-right-radius: 0.25rem;
+    }
+
+    .search-form input:hover {
+        color: #f5f5f5;
+        background-color: #424242;
+    }
+
+    .search-icon-container {
+        border-top-left-radius: 0.25rem;
+        border-bottom-left-radius: 0.25rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 34px;
+        background: #424242;
+        outline: none;
+        border: none;
+    }
+
+    .search-icon-container svg {
+        height: 100%;
+        width: 100%;
+        fill: none;
+        stroke: #7D7D7D;
+    }
+
+    .search-icon-container:hover {
+        cursor: pointer;
+    }
+
+    .narrow-internal-header > *:not(.top-row) {
+        visibility: hidden;
+        display: none;
+    }
+</style>
+    <div class="central-area">
+        <!-- CONTENT -->
+        <main id="page">
+            
+<h1>Newest Devices</h1>
+<hr style="border: 1px solid #e7e7e9;">
+<div class="page-content">
+    <div class="device-grid">
+            <div class="device-item">
+            <div class="device-image">
+                <a href="https://maxforlive.com/library/device/14477/Aer%20Shifter">
+                    <div class="thumbnail">
+                        <img src="./Max for Live Community Resource_files/saved_resource" onerror="this.onerror=null; this.src=&#39;/images/noDeviceScreenshot.png&#39;;">
+                    </div>
+                </a>
+            </div>
+            <div class="device-info">
+                <div class="date-time-container">
+                    <span class="month">Jan</span>
+                    <span class="day">31</span>
+                </div>
+                <a href="https://maxforlive.com/library/device/14477/Aer%20Shifter">Aer Shifter</a>
+                <br>
+                By <a href="https://maxforlive.com/profile/user/AkihikoMatsumoto">AkihikoMatsumoto</a>
+                <div class="library-device-description">Aer Shifter does not aim to decorate sound.<br>
+It treats aud...</div>
+            </div>
+            <div class="library-device-bottom-area">
+                <div class="library-device-download-area">
+                    <form method="post" action="https://maxforlive.com/library/device/14477/Aer%20Shifter">
+                                                <input class="button" type="submit" name="submit" value="Device Details">
+                    </form>
+                                        0 <i class="fas fa-comments"></i>
+                </div>
+            </div>
+        </div>
+                <div class="device-item">
+            <div class="device-image">
+                <a href="https://maxforlive.com/library/device/14476/Project%20x%20Session%20Time%20Counter">
+                    <div class="thumbnail">
+                        <img src="./Max for Live Community Resource_files/saved_resource(1)" onerror="this.onerror=null; this.src=&#39;/images/noDeviceScreenshot.png&#39;;">
+                    </div>
+                </a>
+            </div>
+            <div class="device-info">
+                <div class="date-time-container">
+                    <span class="month">Jan</span>
+                    <span class="day">31</span>
+                </div>
+                <a href="https://maxforlive.com/library/device/14476/Project%20x%20Session%20Time%20Counter">Project x Session Time Counter</a>
+                <br>
+                By <a href="https://maxforlive.com/profile/user/pedestrianjpn">pedestrianjpn</a>
+                <div class="library-device-description">DL : https://payhip.com/b/IaAwY<br>
+<br>
+This is a straightfor...</div>
+            </div>
+            <div class="library-device-bottom-area">
+                <div class="library-device-download-area">
+                    <form method="post" action="https://maxforlive.com/library/device/14476/Project%20x%20Session%20Time%20Counter">
+                                                <input class="button" type="submit" name="submit" value="Device Details">
+                    </form>
+                                        0 <i class="fas fa-comments"></i>
+                </div>
+            </div>
+        </div>
+                <div class="device-item">
+            <div class="device-image">
+                <a href="https://maxforlive.com/library/device/14475/Hanging%20Notes%20Stopper">
+                    <div class="thumbnail">
+                        <img src="./Max for Live Community Resource_files/saved_resource(2)" onerror="this.onerror=null; this.src=&#39;/images/noDeviceScreenshot.png&#39;;">
+                    </div>
+                </a>
+            </div>
+            <div class="device-info">
+                <div class="date-time-container">
+                    <span class="month">Jan</span>
+                    <span class="day">31</span>
+                </div>
+                <a href="https://maxforlive.com/library/device/14475/Hanging%20Notes%20Stopper">Hanging Notes Stopper</a>
+                <br>
+                By <a href="https://maxforlive.com/profile/user/Maboroshy">Maboroshy</a>
+                <div class="library-device-description">This device cuts off hanging notes on transport stop and tra...</div>
+            </div>
+            <div class="library-device-bottom-area">
+                <div class="library-device-download-area">
+                    <form method="post" action="https://maxforlive.com/download.php">
+                                                    <input type="hidden" name="id" value="14475">
+                                                <input class="button" type="submit" name="submit" value="Download Device">
+                    </form>
+                                            2 <i class="fas fa-download"></i>
+                                        0 <i class="fas fa-comments"></i>
+                </div>
+            </div>
+        </div>
+                <div class="device-item">
+            <div class="device-image">
+                <a href="https://maxforlive.com/library/device/14473/Abletonlive.aaf">
+                    <div class="thumbnail">
+                        <img src="./Max for Live Community Resource_files/saved_resource(3)" onerror="this.onerror=null; this.src=&#39;/images/noDeviceScreenshot.png&#39;;">
+                    </div>
+                </a>
+            </div>
+            <div class="device-info">
+                <div class="date-time-container">
+                    <span class="month">Jan</span>
+                    <span class="day">31</span>
+                </div>
+                <a href="https://maxforlive.com/library/device/14473/Abletonlive.aaf">Abletonlive.aaf </a>
+                <br>
+                By <a href="https://maxforlive.com/profile/user/xterminatorapps">xterminatorapps</a>
+                <div class="library-device-description">Introducing Abletonlive.aaf - Universal AAF to Ableton Live ...</div>
+            </div>
+            <div class="library-device-bottom-area">
+                <div class="library-device-download-area">
+                    <form method="post" action="https://maxforlive.com/library/device/14473/Abletonlive.aaf">
+                                                <input class="button" type="submit" name="submit" value="Device Details">
+                    </form>
+                                        0 <i class="fas fa-comments"></i>
+                </div>
+            </div>
+        </div>
+                <div class="device-item">
+            <div class="device-image">
+                <a href="https://maxforlive.com/library/device/14472/MapButtonOneshot">
+                    <div class="thumbnail">
+                        <img src="./Max for Live Community Resource_files/saved_resource(4)" onerror="this.onerror=null; this.src=&#39;/images/noDeviceScreenshot.png&#39;;">
+                    </div>
+                </a>
+            </div>
+            <div class="device-info">
+                <div class="date-time-container">
+                    <span class="month">Jan</span>
+                    <span class="day">31</span>
+                </div>
+                <a href="https://maxforlive.com/library/device/14472/MapButtonOneshot">MapButtonOneshot</a>
+                <br>
+                By <a href="https://maxforlive.com/profile/user/mtfo">mtfo</a>
+                <div class="library-device-description">Place this on a DrumRack chain, and use your Push or midi co...</div>
+            </div>
+            <div class="library-device-bottom-area">
+                <div class="library-device-download-area">
+                    <form method="post" action="https://maxforlive.com/library/device/14472/MapButtonOneshot">
+                                                <input class="button" type="submit" name="submit" value="Device Details">
+                    </form>
+                                        0 <i class="fas fa-comments"></i>
+                </div>
+            </div>
+        </div>
+                <div class="device-item">
+            <div class="device-image">
+                <a href="https://maxforlive.com/library/device/14471/Utilities%20Suite">
+                    <div class="thumbnail">
+                        <img src="./Max for Live Community Resource_files/saved_resource(5)" onerror="this.onerror=null; this.src=&#39;/images/noDeviceScreenshot.png&#39;;">
+                    </div>
+                </a>
+            </div>
+            <div class="device-info">
+                <div class="date-time-container">
+                    <span class="month">Jan</span>
+                    <span class="day">30</span>
+                </div>
+                <a href="https://maxforlive.com/library/device/14471/Utilities%20Suite">Utilities Suite </a>
+                <br>
+                By <a href="https://maxforlive.com/profile/user/AnalogWaveStudio">AnalogWaveStudio</a>
+                <div class="library-device-description">AnalogWave-Studio Utilities Suite (Free):<br>
+Five simple Max...</div>
+            </div>
+            <div class="library-device-bottom-area">
+                <div class="library-device-download-area">
+                    <form method="post" action="https://maxforlive.com/library/device/14471/Utilities%20Suite">
+                                                <input class="button" type="submit" name="submit" value="Device Details">
+                    </form>
+                                        0 <i class="fas fa-comments"></i>
+                </div>
+            </div>
+        </div>
+                <div class="device-item">
+            <div class="device-image">
+                <a href="https://maxforlive.com/library/device/14470/CLUTCH">
+                    <div class="thumbnail">
+                        <img src="./Max for Live Community Resource_files/saved_resource(6)" onerror="this.onerror=null; this.src=&#39;/images/noDeviceScreenshot.png&#39;;">
+                    </div>
+                </a>
+            </div>
+            <div class="device-info">
+                <div class="date-time-container">
+                    <span class="month">Jan</span>
+                    <span class="day">30</span>
+                </div>
+                <a href="https://maxforlive.com/library/device/14470/CLUTCH">CLUTCH</a>
+                <br>
+                By <a href="https://maxforlive.com/profile/user/yobalint">yobalint</a>
+                <div class="library-device-description">CLUTCH is a precision sidechain-driven MIDI gate designed fo...</div>
+            </div>
+            <div class="library-device-bottom-area">
+                <div class="library-device-download-area">
+                    <form method="post" action="https://maxforlive.com/library/device/14470/CLUTCH">
+                                                <input class="button" type="submit" name="submit" value="Device Details">
+                    </form>
+                                        0 <i class="fas fa-comments"></i>
+                </div>
+            </div>
+        </div>
+                <div class="device-item">
+            <div class="device-image">
+                <a href="https://maxforlive.com/library/device/14466/ABBOTT%20ABBOTT">
+                    <div class="thumbnail">
+                        <img src="./Max for Live Community Resource_files/saved_resource(7)" onerror="this.onerror=null; this.src=&#39;/images/noDeviceScreenshot.png&#39;;">
+                    </div>
+                </a>
+            </div>
+            <div class="device-info">
+                <div class="date-time-container">
+                    <span class="month">Jan</span>
+                    <span class="day">30</span>
+                </div>
+                <a href="https://maxforlive.com/library/device/14466/ABBOTT%20ABBOTT">ABBOTT ABBOTT</a>
+                <br>
+                By <a href="https://maxforlive.com/profile/user/RemoDeVico">RemoDeVico</a>
+                <div class="library-device-description">ABBOTT ABBOTT<br>
+download: https://www.remodevicocomposer.eu...</div>
+            </div>
+            <div class="library-device-bottom-area">
+                <div class="library-device-download-area">
+                    <form method="post" action="https://maxforlive.com/library/device/14466/ABBOTT%20ABBOTT">
+                                                <input class="button" type="submit" name="submit" value="Device Details">
+                    </form>
+                                        1 <i class="fas fa-comments"></i>
+                </div>
+            </div>
+        </div>
+                <div class="device-item">
+            <div class="device-image">
+                <a href="https://maxforlive.com/library/device/14462/Meta%20Mod">
+                    <div class="thumbnail">
+                        <img src="./Max for Live Community Resource_files/saved_resource(8)" onerror="this.onerror=null; this.src=&#39;/images/noDeviceScreenshot.png&#39;;">
+                    </div>
+                </a>
+            </div>
+            <div class="device-info">
+                <div class="date-time-container">
+                    <span class="month">Jan</span>
+                    <span class="day">30</span>
+                </div>
+                <a href="https://maxforlive.com/library/device/14462/Meta%20Mod">Meta Mod</a>
+                <br>
+                By <a href="https://maxforlive.com/profile/user/bassdaddy">bassdaddy</a>
+                <div class="library-device-description">Meta Mod - Complex Modulation Made Simple<br>
+<br>
+Stop Fighti...</div>
+            </div>
+            <div class="library-device-bottom-area">
+                <div class="library-device-download-area">
+                    <form method="post" action="https://maxforlive.com/library/device/14462/Meta%20Mod">
+                                                <input class="button" type="submit" name="submit" value="Device Details">
+                    </form>
+                                        0 <i class="fas fa-comments"></i>
+                </div>
+            </div>
+        </div>
+                <div class="device-item">
+            <div class="device-image">
+                <a href="https://maxforlive.com/library/device/14461/Mod%20Math">
+                    <div class="thumbnail">
+                        <img src="./Max for Live Community Resource_files/saved_resource(9)" onerror="this.onerror=null; this.src=&#39;/images/noDeviceScreenshot.png&#39;;">
+                    </div>
+                </a>
+            </div>
+            <div class="device-info">
+                <div class="date-time-container">
+                    <span class="month">Jan</span>
+                    <span class="day">30</span>
+                </div>
+                <a href="https://maxforlive.com/library/device/14461/Mod%20Math">Mod Math</a>
+                <br>
+                By <a href="https://maxforlive.com/profile/user/bassdaddy">bassdaddy</a>
+                <div class="library-device-description">Mod Math is a free and lightweight modulation processor that...</div>
+            </div>
+            <div class="library-device-bottom-area">
+                <div class="library-device-download-area">
+                    <form method="post" action="https://maxforlive.com/library/device/14461/Mod%20Math">
+                                                <input class="button" type="submit" name="submit" value="Device Details">
+                    </form>
+                                        0 <i class="fas fa-comments"></i>
+                </div>
+            </div>
+        </div>
+                <div class="device-item">
+            <div class="device-image">
+                <a href="https://maxforlive.com/library/device/14459/TAPE%20MOD">
+                    <div class="thumbnail">
+                        <img src="./Max for Live Community Resource_files/saved_resource(10)" onerror="this.onerror=null; this.src=&#39;/images/noDeviceScreenshot.png&#39;;">
+                    </div>
+                </a>
+            </div>
+            <div class="device-info">
+                <div class="date-time-container">
+                    <span class="month">Jan</span>
+                    <span class="day">29</span>
+                </div>
+                <a href="https://maxforlive.com/library/device/14459/TAPE%20MOD">TAPE MOD</a>
+                <br>
+                By <a href="https://maxforlive.com/profile/user/fendoap">fendoap</a>
+                <div class="library-device-description">TAPE MOD is an effect that adds a Lo-fi fluctuation to the t...</div>
+            </div>
+            <div class="library-device-bottom-area">
+                <div class="library-device-download-area">
+                    <form method="post" action="https://maxforlive.com/library/device/14459/TAPE%20MOD">
+                                                <input class="button" type="submit" name="submit" value="Device Details">
+                    </form>
+                                        0 <i class="fas fa-comments"></i>
+                </div>
+            </div>
+        </div>
+                <div class="device-item">
+            <div class="device-image">
+                <a href="https://maxforlive.com/library/device/14458/Syntakt%20CTLR%201.0">
+                    <div class="thumbnail">
+                        <img src="./Max for Live Community Resource_files/saved_resource(11)" onerror="this.onerror=null; this.src=&#39;/images/noDeviceScreenshot.png&#39;;">
+                    </div>
+                </a>
+            </div>
+            <div class="device-info">
+                <div class="date-time-container">
+                    <span class="month">Jan</span>
+                    <span class="day">29</span>
+                </div>
+                <a href="https://maxforlive.com/library/device/14458/Syntakt%20CTLR%201.0">Syntakt CTLR 1.0</a>
+                <br>
+                By <a href="https://maxforlive.com/profile/user/pauk">pauk</a>
+                <div class="library-device-description">Syntakt Controller is a midi max for live device to control ...</div>
+            </div>
+            <div class="library-device-bottom-area">
+                <div class="library-device-download-area">
+                    <form method="post" action="https://maxforlive.com/library/device/14458/Syntakt%20CTLR%201.0">
+                                                <input class="button" type="submit" name="submit" value="Device Details">
+                    </form>
+                                        0 <i class="fas fa-comments"></i>
+                </div>
+            </div>
+        </div>
+                <div class="device-item">
+            <div class="device-image">
+                <a href="https://maxforlive.com/library/device/14457/OP-XY%20CTLR%201.0">
+                    <div class="thumbnail">
+                        <img src="./Max for Live Community Resource_files/saved_resource(12)" onerror="this.onerror=null; this.src=&#39;/images/noDeviceScreenshot.png&#39;;">
+                    </div>
+                </a>
+            </div>
+            <div class="device-info">
+                <div class="date-time-container">
+                    <span class="month">Jan</span>
+                    <span class="day">29</span>
+                </div>
+                <a href="https://maxforlive.com/library/device/14457/OP-XY%20CTLR%201.0">OP-XY CTLR 1.0</a>
+                <br>
+                By <a href="https://maxforlive.com/profile/user/pauk">pauk</a>
+                <div class="library-device-description">OP-XY CTLR 1.0 is a midi max for live device for Ableton Liv...</div>
+            </div>
+            <div class="library-device-bottom-area">
+                <div class="library-device-download-area">
+                    <form method="post" action="https://maxforlive.com/library/device/14457/OP-XY%20CTLR%201.0">
+                                                <input class="button" type="submit" name="submit" value="Device Details">
+                    </form>
+                                        0 <i class="fas fa-comments"></i>
+                </div>
+            </div>
+        </div>
+                <div class="device-item">
+            <div class="device-image">
+                <a href="https://maxforlive.com/library/device/14455/ParamLatch">
+                    <div class="thumbnail">
+                        <img src="./Max for Live Community Resource_files/saved_resource(13)" onerror="this.onerror=null; this.src=&#39;/images/noDeviceScreenshot.png&#39;;">
+                    </div>
+                </a>
+            </div>
+            <div class="device-info">
+                <div class="date-time-container">
+                    <span class="month">Jan</span>
+                    <span class="day">29</span>
+                </div>
+                <a href="https://maxforlive.com/library/device/14455/ParamLatch">ParamLatch</a>
+                <br>
+                By <a href="https://maxforlive.com/profile/user/warf">warf</a>
+                <div class="library-device-description">MIDI Auto-Mapping to Selected Parameter<br>
+- Control the par...</div>
+            </div>
+            <div class="library-device-bottom-area">
+                <div class="library-device-download-area">
+                    <form method="post" action="https://maxforlive.com/library/device/14455/ParamLatch">
+                                                <input class="button" type="submit" name="submit" value="Device Details">
+                    </form>
+                                        7 <i class="fas fa-comments"></i>
+                </div>
+            </div>
+        </div>
+                <div class="device-item">
+            <div class="device-image">
+                <a href="https://maxforlive.com/library/device/14454/PanHaze">
+                    <div class="thumbnail">
+                        <img src="./Max for Live Community Resource_files/saved_resource(14)" onerror="this.onerror=null; this.src=&#39;/images/noDeviceScreenshot.png&#39;;">
+                    </div>
+                </a>
+            </div>
+            <div class="device-info">
+                <div class="date-time-container">
+                    <span class="month">Jan</span>
+                    <span class="day">29</span>
+                </div>
+                <a href="https://maxforlive.com/library/device/14454/PanHaze">PanHaze</a>
+                <br>
+                By <a href="https://maxforlive.com/profile/user/warf">warf</a>
+                <div class="library-device-description">Coherent Panning, Even on Headphones. Rock-Solid Mono Low En...</div>
+            </div>
+            <div class="library-device-bottom-area">
+                <div class="library-device-download-area">
+                    <form method="post" action="https://maxforlive.com/library/device/14454/PanHaze">
+                                                <input class="button" type="submit" name="submit" value="Device Details">
+                    </form>
+                                        0 <i class="fas fa-comments"></i>
+                </div>
+            </div>
+        </div>
+                <div class="device-item">
+            <div class="device-image">
+                <a href="https://maxforlive.com/library/device/14453/Refmeter">
+                    <div class="thumbnail">
+                        <img src="./Max for Live Community Resource_files/saved_resource(15)" onerror="this.onerror=null; this.src=&#39;/images/noDeviceScreenshot.png&#39;;">
+                    </div>
+                </a>
+            </div>
+            <div class="device-info">
+                <div class="date-time-container">
+                    <span class="month">Jan</span>
+                    <span class="day">29</span>
+                </div>
+                <a href="https://maxforlive.com/library/device/14453/Refmeter">Refmeter</a>
+                <br>
+                By <a href="https://maxforlive.com/profile/user/warf">warf</a>
+                <div class="library-device-description">Level meter for music production and mixing<br>
+- Displays RM...</div>
+            </div>
+            <div class="library-device-bottom-area">
+                <div class="library-device-download-area">
+                    <form method="post" action="https://maxforlive.com/library/device/14453/Refmeter">
+                                                <input class="button" type="submit" name="submit" value="Device Details">
+                    </form>
+                                        3 <i class="fas fa-comments"></i>
+                </div>
+            </div>
+        </div>
+                <div class="device-item">
+            <div class="device-image">
+                <a href="https://maxforlive.com/library/device/14452/GainPrep">
+                    <div class="thumbnail">
+                        <img src="./Max for Live Community Resource_files/saved_resource(16)" onerror="this.onerror=null; this.src=&#39;/images/noDeviceScreenshot.png&#39;;">
+                    </div>
+                </a>
+            </div>
+            <div class="device-info">
+                <div class="date-time-container">
+                    <span class="month">Jan</span>
+                    <span class="day">29</span>
+                </div>
+                <a href="https://maxforlive.com/library/device/14452/GainPrep">GainPrep</a>
+                <br>
+                By <a href="https://maxforlive.com/profile/user/warf">warf</a>
+                <div class="library-device-description">A one-shot gain stager that measures your signal and sets th...</div>
+            </div>
+            <div class="library-device-bottom-area">
+                <div class="library-device-download-area">
+                    <form method="post" action="https://maxforlive.com/library/device/14452/GainPrep">
+                                                <input class="button" type="submit" name="submit" value="Device Details">
+                    </form>
+                                        0 <i class="fas fa-comments"></i>
+                </div>
+            </div>
+        </div>
+                <div class="device-item">
+            <div class="device-image">
+                <a href="https://maxforlive.com/library/device/14451/MC%20-%20Multirange%20And%20Gen">
+                    <div class="thumbnail">
+                        <img src="./Max for Live Community Resource_files/saved_resource(17)" onerror="this.onerror=null; this.src=&#39;/images/noDeviceScreenshot.png&#39;;">
+                    </div>
+                </a>
+            </div>
+            <div class="device-info">
+                <div class="date-time-container">
+                    <span class="month">Jan</span>
+                    <span class="day">29</span>
+                </div>
+                <a href="https://maxforlive.com/library/device/14451/MC%20-%20Multirange%20And%20Gen">MC - Multirange And Gen </a>
+                <br>
+                By <a href="https://maxforlive.com/profile/user/Arsch4n">Arsch4n</a>
+                <div class="library-device-description">in the new version, we can now use this device as a fully fu...</div>
+            </div>
+            <div class="library-device-bottom-area">
+                <div class="library-device-download-area">
+                    <form method="post" action="https://maxforlive.com/library/device/14451/MC%20-%20Multirange%20And%20Gen">
+                                                <input class="button" type="submit" name="submit" value="Device Details">
+                    </form>
+                                        0 <i class="fas fa-comments"></i>
+                </div>
+            </div>
+        </div>
+                <div class="device-item">
+            <div class="device-image">
+                <a href="https://maxforlive.com/library/device/14450/FineTrim">
+                    <div class="thumbnail">
+                        <img src="./Max for Live Community Resource_files/saved_resource(18)" onerror="this.onerror=null; this.src=&#39;/images/noDeviceScreenshot.png&#39;;">
+                    </div>
+                </a>
+            </div>
+            <div class="device-info">
+                <div class="date-time-container">
+                    <span class="month">Jan</span>
+                    <span class="day">28</span>
+                </div>
+                <a href="https://maxforlive.com/library/device/14450/FineTrim">FineTrim</a>
+                <br>
+                By <a href="https://maxforlive.com/profile/user/warf">warf</a>
+                <div class="library-device-description">A simple, high-precision gain tool with 1.0 dB trim and 0.1 ...</div>
+            </div>
+            <div class="library-device-bottom-area">
+                <div class="library-device-download-area">
+                    <form method="post" action="https://maxforlive.com/library/device/14450/FineTrim">
+                                                <input class="button" type="submit" name="submit" value="Device Details">
+                    </form>
+                                        4 <i class="fas fa-comments"></i>
+                </div>
+            </div>
+        </div>
+                <div class="device-item">
+            <div class="device-image">
+                <a href="https://maxforlive.com/library/device/14447/FREE-Valhalla%20Shimmer%20Wrapper%20Hardware%20Inspired">
+                    <div class="thumbnail">
+                        <img src="./Max for Live Community Resource_files/saved_resource(19)" onerror="this.onerror=null; this.src=&#39;/images/noDeviceScreenshot.png&#39;;">
+                    </div>
+                </a>
+            </div>
+            <div class="device-info">
+                <div class="date-time-container">
+                    <span class="month">Jan</span>
+                    <span class="day">28</span>
+                </div>
+                <a href="https://maxforlive.com/library/device/14447/FREE-Valhalla%20Shimmer%20Wrapper%20Hardware%20Inspired">FREE-Valhalla Shimmer Wrapper Hardware Inspired</a>
+                <br>
+                By <a href="https://maxforlive.com/profile/user/BlueRat">BlueRat</a>
+                <div class="library-device-description">A Max for Live wrapper that displays Valhalla Shimmer (VST3)...</div>
+            </div>
+            <div class="library-device-bottom-area">
+                <div class="library-device-download-area">
+                    <form method="post" action="https://maxforlive.com/library/device/14447/FREE-Valhalla%20Shimmer%20Wrapper%20Hardware%20Inspired">
+                                                <input class="button" type="submit" name="submit" value="Device Details">
+                    </form>
+                                        0 <i class="fas fa-comments"></i>
+                </div>
+            </div>
+        </div>
+                <div class="device-item">
+            <div class="device-image">
+                <a href="https://maxforlive.com/library/device/14443/Modulators%20Plus">
+                    <div class="thumbnail">
+                        <img src="./Max for Live Community Resource_files/saved_resource(20)" onerror="this.onerror=null; this.src=&#39;/images/noDeviceScreenshot.png&#39;;">
+                    </div>
+                </a>
+            </div>
+            <div class="device-info">
+                <div class="date-time-container">
+                    <span class="month">Jan</span>
+                    <span class="day">28</span>
+                </div>
+                <a href="https://maxforlive.com/library/device/14443/Modulators%20Plus">Modulators Plus</a>
+                <br>
+                By <a href="https://maxforlive.com/profile/user/maxforcats">maxforcats</a>
+                <div class="library-device-description">Modulators Plus is a modulation toolkit for Ableton Live wit...</div>
+            </div>
+            <div class="library-device-bottom-area">
+                <div class="library-device-download-area">
+                    <form method="post" action="https://maxforlive.com/library/device/14443/Modulators%20Plus">
+                                                <input class="button" type="submit" name="submit" value="Device Details">
+                    </form>
+                                        0 <i class="fas fa-comments"></i>
+                </div>
+            </div>
+        </div>
+                <div class="device-item">
+            <div class="device-image">
+                <a href="https://maxforlive.com/library/device/14442/PocketFaders">
+                    <div class="thumbnail">
+                        <img src="./Max for Live Community Resource_files/saved_resource(21)" onerror="this.onerror=null; this.src=&#39;/images/noDeviceScreenshot.png&#39;;">
+                    </div>
+                </a>
+            </div>
+            <div class="device-info">
+                <div class="date-time-container">
+                    <span class="month">Jan</span>
+                    <span class="day">28</span>
+                </div>
+                <a href="https://maxforlive.com/library/device/14442/PocketFaders">PocketFaders</a>
+                <br>
+                By <a href="https://maxforlive.com/profile/user/yobalint">yobalint</a>
+                <div class="library-device-description">Control Ableton Live from your phone with zero setup. Pocket...</div>
+            </div>
+            <div class="library-device-bottom-area">
+                <div class="library-device-download-area">
+                    <form method="post" action="https://maxforlive.com/library/device/14442/PocketFaders">
+                                                <input class="button" type="submit" name="submit" value="Device Details">
+                    </form>
+                                        0 <i class="fas fa-comments"></i>
+                </div>
+            </div>
+        </div>
+                <div class="device-item">
+            <div class="device-image">
+                <a href="https://maxforlive.com/library/device/14440/Top%20end%20sizzle">
+                    <div class="thumbnail">
+                        <img src="./Max for Live Community Resource_files/saved_resource(22)" onerror="this.onerror=null; this.src=&#39;/images/noDeviceScreenshot.png&#39;;">
+                    </div>
+                </a>
+            </div>
+            <div class="device-info">
+                <div class="date-time-container">
+                    <span class="month">Jan</span>
+                    <span class="day">27</span>
+                </div>
+                <a href="https://maxforlive.com/library/device/14440/Top%20end%20sizzle">Top end sizzle</a>
+                <br>
+                By <a href="https://maxforlive.com/profile/user/AnalogWaveStudio">AnalogWaveStudio</a>
+                <div class="library-device-description">A single control that adds musical brightness to any mix....</div>
+            </div>
+            <div class="library-device-bottom-area">
+                <div class="library-device-download-area">
+                    <form method="post" action="https://maxforlive.com/library/device/14440/Top%20end%20sizzle">
+                                                <input class="button" type="submit" name="submit" value="Device Details">
+                    </form>
+                                        0 <i class="fas fa-comments"></i>
+                </div>
+            </div>
+        </div>
+                <div class="device-item">
+            <div class="device-image">
+                <a href="https://maxforlive.com/library/device/14439/elec-tronic.%20costs%205%20dollars.%201.0">
+                    <div class="thumbnail">
+                        <img src="./Max for Live Community Resource_files/saved_resource(23)" onerror="this.onerror=null; this.src=&#39;/images/noDeviceScreenshot.png&#39;;">
+                    </div>
+                </a>
+            </div>
+            <div class="device-info">
+                <div class="date-time-container">
+                    <span class="month">Jan</span>
+                    <span class="day">27</span>
+                </div>
+                <a href="https://maxforlive.com/library/device/14439/elec-tronic.%20costs%205%20dollars.%201.0">elec-tronic. costs 5 dollars. 1.0</a>
+                <br>
+                By <a href="https://maxforlive.com/profile/user/vectoraudio">vectoraudio</a>
+                <div class="library-device-description">This is electronic. Inspired by the euphoria felt when exper...</div>
+            </div>
+            <div class="library-device-bottom-area">
+                <div class="library-device-download-area">
+                    <form method="post" action="https://maxforlive.com/library/device/14439/elec-tronic.%20costs%205%20dollars.%201.0">
+                                                <input class="button" type="submit" name="submit" value="Device Details">
+                    </form>
+                                        0 <i class="fas fa-comments"></i>
+                </div>
+            </div>
+        </div>
+                <div class="device-item">
+            <div class="device-image">
+                <a href="https://maxforlive.com/library/device/14437/Augmenta%20zone%20Clip%20trigger">
+                    <div class="thumbnail">
+                        <img src="./Max for Live Community Resource_files/saved_resource(24)" onerror="this.onerror=null; this.src=&#39;/images/noDeviceScreenshot.png&#39;;">
+                    </div>
+                </a>
+            </div>
+            <div class="device-info">
+                <div class="date-time-container">
+                    <span class="month">Jan</span>
+                    <span class="day">26</span>
+                </div>
+                <a href="https://maxforlive.com/library/device/14437/Augmenta%20zone%20Clip%20trigger">Augmenta zone Clip trigger</a>
+                <br>
+                By <a href="https://maxforlive.com/profile/user/rom1constant">rom1constant</a>
+                <div class="library-device-description">Augmenta Zone Clip Trigger: An Ableton Live plugin to trigge...</div>
+            </div>
+            <div class="library-device-bottom-area">
+                <div class="library-device-download-area">
+                    <form method="post" action="https://maxforlive.com/download.php">
+                                                    <input type="hidden" name="id" value="14437">
+                                                <input class="button" type="submit" name="submit" value="Download Device">
+                    </form>
+                                            63 <i class="fas fa-download"></i>
+                                        0 <i class="fas fa-comments"></i>
+                </div>
+            </div>
+        </div>
+                <div class="device-item">
+            <div class="device-image">
+                <a href="https://maxforlive.com/library/device/14436/Swing%20Delay%20-%20Pro%20Edition">
+                    <div class="thumbnail">
+                        <img src="./Max for Live Community Resource_files/saved_resource(25)" onerror="this.onerror=null; this.src=&#39;/images/noDeviceScreenshot.png&#39;;">
+                    </div>
+                </a>
+            </div>
+            <div class="device-info">
+                <div class="date-time-container">
+                    <span class="month">Jan</span>
+                    <span class="day">26</span>
+                </div>
+                <a href="https://maxforlive.com/library/device/14436/Swing%20Delay%20-%20Pro%20Edition">Swing Delay - Pro Edition</a>
+                <br>
+                By <a href="https://maxforlive.com/profile/user/ProducerStack">ProducerStack</a>
+                <div class="library-device-description">This device is built around Max's tapin~/tapout~ delay obje...</div>
+            </div>
+            <div class="library-device-bottom-area">
+                <div class="library-device-download-area">
+                    <form method="post" action="https://maxforlive.com/library/device/14436/Swing%20Delay%20-%20Pro%20Edition">
+                                                <input class="button" type="submit" name="submit" value="Device Details">
+                    </form>
+                                        0 <i class="fas fa-comments"></i>
+                </div>
+            </div>
+        </div>
+                <div class="device-item">
+            <div class="device-image">
+                <a href="https://maxforlive.com/library/device/14435/Swing%20Delay%20Standard%20Edition">
+                    <div class="thumbnail">
+                        <img src="./Max for Live Community Resource_files/saved_resource(26)" onerror="this.onerror=null; this.src=&#39;/images/noDeviceScreenshot.png&#39;;">
+                    </div>
+                </a>
+            </div>
+            <div class="device-info">
+                <div class="date-time-container">
+                    <span class="month">Jan</span>
+                    <span class="day">26</span>
+                </div>
+                <a href="https://maxforlive.com/library/device/14435/Swing%20Delay%20Standard%20Edition">Swing Delay Standard Edition</a>
+                <br>
+                By <a href="https://maxforlive.com/profile/user/ProducerStack">ProducerStack</a>
+                <div class="library-device-description"><br>
+This device is built around Max's tapin~/tapout~ delay ...</div>
+            </div>
+            <div class="library-device-bottom-area">
+                <div class="library-device-download-area">
+                    <form method="post" action="https://maxforlive.com/download.php">
+                                                    <input type="hidden" name="id" value="14435">
+                                                <input class="button" type="submit" name="submit" value="Download Device">
+                    </form>
+                                            147 <i class="fas fa-download"></i>
+                                        2 <i class="fas fa-comments"></i>
+                </div>
+            </div>
+        </div>
+                <div class="device-item">
+            <div class="device-image">
+                <a href="https://maxforlive.com/library/device/14434/seq">
+                    <div class="thumbnail">
+                        <img src="./Max for Live Community Resource_files/noDeviceScreenshot.png" onerror="this.onerror=null; this.src=&#39;/images/noDeviceScreenshot.png&#39;;">
+                    </div>
+                </a>
+            </div>
+            <div class="device-info">
+                <div class="date-time-container">
+                    <span class="month">Jan</span>
+                    <span class="day">26</span>
+                </div>
+                <a href="https://maxforlive.com/library/device/14434/seq">seq</a>
+                <br>
+                By <a href="https://maxforlive.com/profile/user/pennywize">pennywize</a>
+                <div class="library-device-description">sloppy demo. I wanted to recreate the pattern reproduction o...</div>
+            </div>
+            <div class="library-device-bottom-area">
+                <div class="library-device-download-area">
+                    <form method="post" action="https://maxforlive.com/download.php">
+                                                    <input type="hidden" name="id" value="14434">
+                                                <input class="button" type="submit" name="submit" value="Download Device">
+                    </form>
+                                            47 <i class="fas fa-download"></i>
+                                        0 <i class="fas fa-comments"></i>
+                </div>
+            </div>
+        </div>
+                <div class="device-item">
+            <div class="device-image">
+                <a href="https://maxforlive.com/library/device/14433/PING%20Deck%201.0">
+                    <div class="thumbnail">
+                        <img src="./Max for Live Community Resource_files/saved_resource(27)" onerror="this.onerror=null; this.src=&#39;/images/noDeviceScreenshot.png&#39;;">
+                    </div>
+                </a>
+            </div>
+            <div class="device-info">
+                <div class="date-time-container">
+                    <span class="month">Jan</span>
+                    <span class="day">26</span>
+                </div>
+                <a href="https://maxforlive.com/library/device/14433/PING%20Deck%201.0">PING Deck 1.0</a>
+                <br>
+                By <a href="https://maxforlive.com/profile/user/PINGAUDIO">PINGAUDIO</a>
+                <div class="library-device-description">PING Deck is a Max for Live tape deck effect. Whether you wa...</div>
+            </div>
+            <div class="library-device-bottom-area">
+                <div class="library-device-download-area">
+                    <form method="post" action="https://maxforlive.com/library/device/14433/PING%20Deck%201.0">
+                                                <input class="button" type="submit" name="submit" value="Device Details">
+                    </form>
+                                        0 <i class="fas fa-comments"></i>
+                </div>
+            </div>
+        </div>
+                <div class="device-item">
+            <div class="device-image">
+                <a href="https://maxforlive.com/library/device/14432/LeapLive%20Mapper%201.0%20-%20Leap%20Motion%20controller">
+                    <div class="thumbnail">
+                        <img src="./Max for Live Community Resource_files/saved_resource(28)" onerror="this.onerror=null; this.src=&#39;/images/noDeviceScreenshot.png&#39;;">
+                    </div>
+                </a>
+            </div>
+            <div class="device-info">
+                <div class="date-time-container">
+                    <span class="month">Jan</span>
+                    <span class="day">26</span>
+                </div>
+                <a href="https://maxforlive.com/library/device/14432/LeapLive%20Mapper%201.0%20-%20Leap%20Motion%20controller">LeapLive Mapper 1.0 - Leap Motion controller</a>
+                <br>
+                By <a href="https://maxforlive.com/profile/user/rom1constant">rom1constant</a>
+                <div class="library-device-description">LeapLive Mapper is a Max for Live MIDI effect designed to ca...</div>
+            </div>
+            <div class="library-device-bottom-area">
+                <div class="library-device-download-area">
+                    <form method="post" action="https://maxforlive.com/download.php">
+                                                    <input type="hidden" name="id" value="14432">
+                                                <input class="button" type="submit" name="submit" value="Download Device">
+                    </form>
+                                            86 <i class="fas fa-download"></i>
+                                        4 <i class="fas fa-comments"></i>
+                </div>
+            </div>
+        </div>
+            </div>
+</div>
+
+   <h1>Highest Rated Devices</h1>
+   <hr style="border: 1px solid #e7e7e9;">
+   <div class="page-content">
+      <div class="device-grid">
+              <div class="device-item">
+            <div class="device-image">
+                <a href="https://maxforlive.com/library/device/2192/PolyMind">
+                    <div class="thumbnail">
+                        <img src="./Max for Live Community Resource_files/saved_resource(29)" onerror="this.onerror=null; this.src=&#39;/images/noDeviceScreenshot.png&#39;;">
+                    </div>
+                </a>
+            </div>
+            <div class="device-info">
+                <div class="date-time-container">
+                    <span class="month">Feb</span>
+                    <span class="day">22</span>
+                </div>
+                <a href="https://maxforlive.com/library/device/2192/PolyMind">PolyMind</a>
+                <br>
+                By <a href="https://maxforlive.com/profile/user/nezzyidy">nezzyidy</a>
+                <div class="library-device-description">PolyMind v2 - Dynamic Voice Allocator<br>
+<br>
+Play up to 16 h...</div>
+            </div>
+            <div class="library-device-bottom-area">
+                <div class="library-device-download-area">
+                    <form method="post" action="https://maxforlive.com/download.php">
+                                                    <input type="hidden" name="id" value="2192">
+                                                <input class="button" type="submit" name="submit" value="Download Device">
+                    </form>
+                                             <i class="fas fa-download"></i>
+                                        11 <i class="fas fa-comments"></i>
+                </div>
+            </div>
+        </div>
+                <div class="device-item">
+            <div class="device-image">
+                <a href="https://maxforlive.com/library/device/360/Boardulator">
+                    <div class="thumbnail">
+                        <img src="./Max for Live Community Resource_files/saved_resource(30)" onerror="this.onerror=null; this.src=&#39;/images/noDeviceScreenshot.png&#39;;">
+                    </div>
+                </a>
+            </div>
+            <div class="device-info">
+                <div class="date-time-container">
+                    <span class="month">Jul</span>
+                    <span class="day">29</span>
+                </div>
+                <a href="https://maxforlive.com/library/device/360/Boardulator">Boardulator</a>
+                <br>
+                By <a href="https://maxforlive.com/profile/user/pp">pp</a>
+                <div class="library-device-description">Boardulator, version 0.9.4.<br>
+<br>
+N.B. - experimental WINDO...</div>
+            </div>
+            <div class="library-device-bottom-area">
+                <div class="library-device-download-area">
+                    <form method="post" action="https://maxforlive.com/download.php">
+                                                    <input type="hidden" name="id" value="360">
+                                                <input class="button" type="submit" name="submit" value="Download Device">
+                    </form>
+                                             <i class="fas fa-download"></i>
+                                        10 <i class="fas fa-comments"></i>
+                </div>
+            </div>
+        </div>
+                <div class="device-item">
+            <div class="device-image">
+                <a href="https://maxforlive.com/library/device/7729/Blanket%20-%20an%20amplitude%20enveloper">
+                    <div class="thumbnail">
+                        <img src="./Max for Live Community Resource_files/saved_resource(31)" onerror="this.onerror=null; this.src=&#39;/images/noDeviceScreenshot.png&#39;;">
+                    </div>
+                </a>
+            </div>
+            <div class="device-info">
+                <div class="date-time-container">
+                    <span class="month">Nov</span>
+                    <span class="day">28</span>
+                </div>
+                <a href="https://maxforlive.com/library/device/7729/Blanket%20-%20an%20amplitude%20enveloper">Blanket - an amplitude enveloper</a>
+                <br>
+                By <a href="https://maxforlive.com/profile/user/igotlost">igotlost</a>
+                <div class="library-device-description">%%%%%%%%%%%%%%%%%%<br>
+<br>
+** Only works with Live 11 **<br>
+...</div>
+            </div>
+            <div class="library-device-bottom-area">
+                <div class="library-device-download-area">
+                    <form method="post" action="https://maxforlive.com/download.php">
+                                                    <input type="hidden" name="id" value="7729">
+                                                <input class="button" type="submit" name="submit" value="Download Device">
+                    </form>
+                                             <i class="fas fa-download"></i>
+                                        9 <i class="fas fa-comments"></i>
+                </div>
+            </div>
+        </div>
+                <div class="device-item">
+            <div class="device-image">
+                <a href="https://maxforlive.com/library/device/13329/Parameter%20Randomizer">
+                    <div class="thumbnail">
+                        <img src="./Max for Live Community Resource_files/saved_resource(32)" onerror="this.onerror=null; this.src=&#39;/images/noDeviceScreenshot.png&#39;;">
+                    </div>
+                </a>
+            </div>
+            <div class="device-info">
+                <div class="date-time-container">
+                    <span class="month">Aug</span>
+                    <span class="day">17</span>
+                </div>
+                <a href="https://maxforlive.com/library/device/13329/Parameter%20Randomizer">Parameter Randomizer</a>
+                <br>
+                By <a href="https://maxforlive.com/profile/user/midrun">midrun</a>
+                <div class="library-device-description">A utility device for Ableton Live that lets you randomize an...</div>
+            </div>
+            <div class="library-device-bottom-area">
+                <div class="library-device-download-area">
+                    <form method="post" action="https://maxforlive.com/library/device/13329/Parameter%20Randomizer">
+                                                <input class="button" type="submit" name="submit" value="Device Details">
+                    </form>
+                                        14 <i class="fas fa-comments"></i>
+                </div>
+            </div>
+        </div>
+                <div class="device-item">
+            <div class="device-image">
+                <a href="https://maxforlive.com/library/device/77/Bouncing%20Ball">
+                    <div class="thumbnail">
+                        <img src="./Max for Live Community Resource_files/saved_resource(33)" onerror="this.onerror=null; this.src=&#39;/images/noDeviceScreenshot.png&#39;;">
+                    </div>
+                </a>
+            </div>
+            <div class="device-info">
+                <div class="date-time-container">
+                    <span class="month">Nov</span>
+                    <span class="day">15</span>
+                </div>
+                <a href="https://maxforlive.com/library/device/77/Bouncing%20Ball">Bouncing Ball</a>
+                <br>
+                By <a href="https://maxforlive.com/profile/user/aminoplacid">aminoplacid</a>
+                <div class="library-device-description">Modeled the effect of a bouncing ball.  Parameters for Initi...</div>
+            </div>
+            <div class="library-device-bottom-area">
+                <div class="library-device-download-area">
+                    <form method="post" action="https://maxforlive.com/download.php">
+                                                    <input type="hidden" name="id" value="77">
+                                                <input class="button" type="submit" name="submit" value="Download Device">
+                    </form>
+                                             <i class="fas fa-download"></i>
+                                        12 <i class="fas fa-comments"></i>
+                </div>
+            </div>
+        </div>
+                <div class="device-item">
+            <div class="device-image">
+                <a href="https://maxforlive.com/library/device/202/AM%20Music%20Theory">
+                    <div class="thumbnail">
+                        <img src="./Max for Live Community Resource_files/saved_resource(34)" onerror="this.onerror=null; this.src=&#39;/images/noDeviceScreenshot.png&#39;;">
+                    </div>
+                </a>
+            </div>
+            <div class="device-info">
+                <div class="date-time-container">
+                    <span class="month">Jan</span>
+                    <span class="day">29</span>
+                </div>
+                <a href="https://maxforlive.com/library/device/202/AM%20Music%20Theory">AM Music Theory</a>
+                <br>
+                By <a href="https://maxforlive.com/profile/user/AxisMundi">AxisMundi</a>
+                <div class="library-device-description">MIDI Note Generator Plugin<br>
+<br>
+*Highly customizable MIDI ...</div>
+            </div>
+            <div class="library-device-bottom-area">
+                <div class="library-device-download-area">
+                    <form method="post" action="https://maxforlive.com/download.php">
+                                                    <input type="hidden" name="id" value="202">
+                                                <input class="button" type="submit" name="submit" value="Download Device">
+                    </form>
+                                             <i class="fas fa-download"></i>
+                                        18 <i class="fas fa-comments"></i>
+                </div>
+            </div>
+        </div>
+                <div class="device-item">
+            <div class="device-image">
+                <a href="https://maxforlive.com/library/device/284/Lemubara%20Sampler">
+                    <div class="thumbnail">
+                        <img src="./Max for Live Community Resource_files/saved_resource(35)" onerror="this.onerror=null; this.src=&#39;/images/noDeviceScreenshot.png&#39;;">
+                    </div>
+                </a>
+            </div>
+            <div class="device-info">
+                <div class="date-time-container">
+                    <span class="month">Apr</span>
+                    <span class="day">30</span>
+                </div>
+                <a href="https://maxforlive.com/library/device/284/Lemubara%20Sampler">Lemubara Sampler</a>
+                <br>
+                By <a href="https://maxforlive.com/profile/user/LemuBaraTools">LemuBaraTools</a>
+                <div class="library-device-description">-LemuBara Sampler-<br>
+<br>
+Update 1.1<br>
+<br>
+Now you can drag...</div>
+            </div>
+            <div class="library-device-bottom-area">
+                <div class="library-device-download-area">
+                    <form method="post" action="https://maxforlive.com/download.php">
+                                                    <input type="hidden" name="id" value="284">
+                                                <input class="button" type="submit" name="submit" value="Download Device">
+                    </form>
+                                             <i class="fas fa-download"></i>
+                                        14 <i class="fas fa-comments"></i>
+                </div>
+            </div>
+        </div>
+                <div class="device-item">
+            <div class="device-image">
+                <a href="https://maxforlive.com/library/device/244/FM%20JoMoX%20AiR%20Base%2099%20Control">
+                    <div class="thumbnail">
+                        <img src="./Max for Live Community Resource_files/saved_resource(36)" onerror="this.onerror=null; this.src=&#39;/images/noDeviceScreenshot.png&#39;;">
+                    </div>
+                </a>
+            </div>
+            <div class="device-info">
+                <div class="date-time-container">
+                    <span class="month">Mar</span>
+                    <span class="day">11</span>
+                </div>
+                <a href="https://maxforlive.com/library/device/244/FM%20JoMoX%20AiR%20Base%2099%20Control">FM JoMoX AiR Base 99 Control</a>
+                <br>
+                By <a href="https://maxforlive.com/profile/user/delaneyparker">delaneyparker</a>
+                <div class="library-device-description">Max4Live control for the JoMoX AirBase99.<br>
+<br>
+The JoMoX A...</div>
+            </div>
+            <div class="library-device-bottom-area">
+                <div class="library-device-download-area">
+                    <form method="post" action="https://maxforlive.com/download.php">
+                                                    <input type="hidden" name="id" value="244">
+                                                <input class="button" type="submit" name="submit" value="Download Device">
+                    </form>
+                                             <i class="fas fa-download"></i>
+                                        26 <i class="fas fa-comments"></i>
+                </div>
+            </div>
+        </div>
+                <div class="device-item">
+            <div class="device-image">
+                <a href="https://maxforlive.com/library/device/296/LBC%20Synplant">
+                    <div class="thumbnail">
+                        <img src="./Max for Live Community Resource_files/saved_resource(37)" onerror="this.onerror=null; this.src=&#39;/images/noDeviceScreenshot.png&#39;;">
+                    </div>
+                </a>
+            </div>
+            <div class="device-info">
+                <div class="date-time-container">
+                    <span class="month">May</span>
+                    <span class="day">13</span>
+                </div>
+                <a href="https://maxforlive.com/library/device/296/LBC%20Synplant">LBC Synplant</a>
+                <br>
+                By <a href="https://maxforlive.com/profile/user/LemuBaraTools">LemuBaraTools</a>
+                <div class="library-device-description">- LBC Synplant - 1.0 -<br>
+<br>
+LBC Synplant is a software-spe...</div>
+            </div>
+            <div class="library-device-bottom-area">
+                <div class="library-device-download-area">
+                    <form method="post" action="https://maxforlive.com/download.php">
+                                                    <input type="hidden" name="id" value="296">
+                                                <input class="button" type="submit" name="submit" value="Download Device">
+                    </form>
+                                             <i class="fas fa-download"></i>
+                                        11 <i class="fas fa-comments"></i>
+                </div>
+            </div>
+        </div>
+              </div>
+   </div>
+
+   <h1>Most Downloaded Devices</h1>
+   <hr style="border: 1px solid #e7e7e9;">
+   <div class="page-content">
+      <div class="device-grid">
+              <div class="device-item">
+            <div class="device-image">
+                <a href="https://maxforlive.com/library/device/4260/STING%20by%20SKINNERBOX">
+                    <div class="thumbnail">
+                        <img src="./Max for Live Community Resource_files/saved_resource(38)" onerror="this.onerror=null; this.src=&#39;/images/noDeviceScreenshot.png&#39;;">
+                    </div>
+                </a>
+            </div>
+            <div class="device-info">
+                <div class="date-time-container">
+                    <span class="month">Aug</span>
+                    <span class="day">03</span>
+                </div>
+                <a href="https://maxforlive.com/library/device/4260/STING%20by%20SKINNERBOX">STING by SKINNERBOX</a>
+                <br>
+                By <a href="https://maxforlive.com/profile/user/skinnerbox">skinnerbox</a>
+                <div class="library-device-description">This version of sting is discontinued and being replaced wit...</div>
+            </div>
+            <div class="library-device-bottom-area">
+                <div class="library-device-download-area">
+                    <form method="post" action="https://maxforlive.com/download.php">
+                                                    <input type="hidden" name="id" value="4260">
+                                                <input class="button" type="submit" name="submit" value="Download Device">
+                    </form>
+                                            123319 <i class="fas fa-download"></i>
+                                        24 <i class="fas fa-comments"></i>
+                </div>
+            </div>
+        </div>
+                <div class="device-item">
+            <div class="device-image">
+                <a href="https://maxforlive.com/library/device/2431/POLYRHYTHMUS%20-%20a%20modular%20euclidean%20rhythm%20builder">
+                    <div class="thumbnail">
+                        <img src="./Max for Live Community Resource_files/saved_resource(39)" onerror="this.onerror=null; this.src=&#39;/images/noDeviceScreenshot.png&#39;;">
+                    </div>
+                </a>
+            </div>
+            <div class="device-info">
+                <div class="date-time-container">
+                    <span class="month">Jul</span>
+                    <span class="day">17</span>
+                </div>
+                <a href="https://maxforlive.com/library/device/2431/POLYRHYTHMUS%20-%20a%20modular%20euclidean%20rhythm%20builder">POLYRHYTHMUS - a modular euclidean rhythm builder</a>
+                <br>
+                By <a href="https://maxforlive.com/profile/user/bennniii">bennniii</a>
+                <div class="library-device-description">* * * * * * * * * * * * * * * * * <br>
+please note, as of JAN...</div>
+            </div>
+            <div class="library-device-bottom-area">
+                <div class="library-device-download-area">
+                    <form method="post" action="https://maxforlive.com/download.php">
+                                                    <input type="hidden" name="id" value="2431">
+                                                <input class="button" type="submit" name="submit" value="Download Device">
+                    </form>
+                                            99052 <i class="fas fa-download"></i>
+                                        101 <i class="fas fa-comments"></i>
+                </div>
+            </div>
+        </div>
+                <div class="device-item">
+            <div class="device-image">
+                <a href="https://maxforlive.com/library/device/4771/MDD%20SnAkE">
+                    <div class="thumbnail">
+                        <img src="./Max for Live Community Resource_files/saved_resource(40)" onerror="this.onerror=null; this.src=&#39;/images/noDeviceScreenshot.png&#39;;">
+                    </div>
+                </a>
+            </div>
+            <div class="device-info">
+                <div class="date-time-container">
+                    <span class="month">Jun</span>
+                    <span class="day">02</span>
+                </div>
+                <a href="https://maxforlive.com/library/device/4771/MDD%20SnAkE">MDD SnAkE</a>
+                <br>
+                By <a href="https://maxforlive.com/profile/user/maximedangles">maximedangles</a>
+                <div class="library-device-description">Hello !<br>
+<br>
+3.2.3<br>
+<br>
+- some fine tuning...<br>
+<br>
+3.2...</div>
+            </div>
+            <div class="library-device-bottom-area">
+                <div class="library-device-download-area">
+                    <form method="post" action="https://maxforlive.com/download.php">
+                                                    <input type="hidden" name="id" value="4771">
+                                                <input class="button" type="submit" name="submit" value="Download Device">
+                    </form>
+                                            95496 <i class="fas fa-download"></i>
+                                        65 <i class="fas fa-comments"></i>
+                </div>
+            </div>
+        </div>
+                <div class="device-item">
+            <div class="device-image">
+                <a href="https://maxforlive.com/library/device/75/ML-185%20Stage%20Controlled%20Sequencer">
+                    <div class="thumbnail">
+                        <img src="./Max for Live Community Resource_files/saved_resource(41)" onerror="this.onerror=null; this.src=&#39;/images/noDeviceScreenshot.png&#39;;">
+                    </div>
+                </a>
+            </div>
+            <div class="device-info">
+                <div class="date-time-container">
+                    <span class="month">Nov</span>
+                    <span class="day">14</span>
+                </div>
+                <a href="https://maxforlive.com/library/device/75/ML-185%20Stage%20Controlled%20Sequencer">ML-185 Stage Controlled Sequencer</a>
+                <br>
+                By <a href="https://maxforlive.com/profile/user/3st">3st</a>
+                <div class="library-device-description">This is a stage-driven sequencer. There are a total of 8 con...</div>
+            </div>
+            <div class="library-device-bottom-area">
+                <div class="library-device-download-area">
+                    <form method="post" action="https://maxforlive.com/download.php">
+                                                    <input type="hidden" name="id" value="75">
+                                                <input class="button" type="submit" name="submit" value="Download Device">
+                    </form>
+                                            93612 <i class="fas fa-download"></i>
+                                        54 <i class="fas fa-comments"></i>
+                </div>
+            </div>
+        </div>
+                <div class="device-item">
+            <div class="device-image">
+                <a href="https://maxforlive.com/library/device/231/Advanced%20Step%20Sequencer">
+                    <div class="thumbnail">
+                        <img src="./Max for Live Community Resource_files/saved_resource(42)" onerror="this.onerror=null; this.src=&#39;/images/noDeviceScreenshot.png&#39;;">
+                    </div>
+                </a>
+            </div>
+            <div class="device-info">
+                <div class="date-time-container">
+                    <span class="month">Mar</span>
+                    <span class="day">02</span>
+                </div>
+                <a href="https://maxforlive.com/library/device/231/Advanced%20Step%20Sequencer">Advanced Step Sequencer</a>
+                <br>
+                By <a href="https://maxforlive.com/profile/user/Rozzer">Rozzer</a>
+                <div class="library-device-description">This step sequencer is quite unlike the Step Sequencer bundl...</div>
+            </div>
+            <div class="library-device-bottom-area">
+                <div class="library-device-download-area">
+                    <form method="post" action="https://maxforlive.com/download.php">
+                                                    <input type="hidden" name="id" value="231">
+                                                <input class="button" type="submit" name="submit" value="Download Device">
+                    </form>
+                                            92370 <i class="fas fa-download"></i>
+                                        63 <i class="fas fa-comments"></i>
+                </div>
+            </div>
+        </div>
+                <div class="device-item">
+            <div class="device-image">
+                <a href="https://maxforlive.com/library/device/240/Grain.Freeze">
+                    <div class="thumbnail">
+                        <img src="./Max for Live Community Resource_files/saved_resource(43)" onerror="this.onerror=null; this.src=&#39;/images/noDeviceScreenshot.png&#39;;">
+                    </div>
+                </a>
+            </div>
+            <div class="device-info">
+                <div class="date-time-container">
+                    <span class="month">Mar</span>
+                    <span class="day">08</span>
+                </div>
+                <a href="https://maxforlive.com/library/device/240/Grain.Freeze">Grain.Freeze</a>
+                <br>
+                By <a href="https://maxforlive.com/profile/user/monolake">monolake</a>
+                <div class="library-device-description">A granular audio freezer effect. Creates lush textures out o...</div>
+            </div>
+            <div class="library-device-bottom-area">
+                <div class="library-device-download-area">
+                    <form method="post" action="https://maxforlive.com/download.php">
+                                                    <input type="hidden" name="id" value="240">
+                                                <input class="button" type="submit" name="submit" value="Download Device">
+                    </form>
+                                            68574 <i class="fas fa-download"></i>
+                                        22 <i class="fas fa-comments"></i>
+                </div>
+            </div>
+        </div>
+                <div class="device-item">
+            <div class="device-image">
+                <a href="https://maxforlive.com/library/device/917/Chord%20Generator">
+                    <div class="thumbnail">
+                        <img src="./Max for Live Community Resource_files/saved_resource(44)" onerror="this.onerror=null; this.src=&#39;/images/noDeviceScreenshot.png&#39;;">
+                    </div>
+                </a>
+            </div>
+            <div class="device-info">
+                <div class="date-time-container">
+                    <span class="month">Sep</span>
+                    <span class="day">29</span>
+                </div>
+                <a href="https://maxforlive.com/library/device/917/Chord%20Generator">Chord Generator</a>
+                <br>
+                By <a href="https://maxforlive.com/profile/user/nordmann">nordmann</a>
+                <div class="library-device-description">The Chord Generator is the second Nordmann generative device...</div>
+            </div>
+            <div class="library-device-bottom-area">
+                <div class="library-device-download-area">
+                    <form method="post" action="https://maxforlive.com/download.php">
+                                                    <input type="hidden" name="id" value="917">
+                                                <input class="button" type="submit" name="submit" value="Download Device">
+                    </form>
+                                            63951 <i class="fas fa-download"></i>
+                                        19 <i class="fas fa-comments"></i>
+                </div>
+            </div>
+        </div>
+                <div class="device-item">
+            <div class="device-image">
+                <a href="https://maxforlive.com/library/device/8357/STING%20by%20IFTAH%20-%20Discontinued">
+                    <div class="thumbnail">
+                        <img src="./Max for Live Community Resource_files/saved_resource(45)" onerror="this.onerror=null; this.src=&#39;/images/noDeviceScreenshot.png&#39;;">
+                    </div>
+                </a>
+            </div>
+            <div class="device-info">
+                <div class="date-time-container">
+                    <span class="month">Sep</span>
+                    <span class="day">08</span>
+                </div>
+                <a href="https://maxforlive.com/library/device/8357/STING%20by%20IFTAH%20-%20Discontinued">STING by IFTAH - Discontinued </a>
+                <br>
+                By <a href="https://maxforlive.com/profile/user/iftah">iftah</a>
+                <div class="library-device-description">This version of sting is discontinued and being replaced wit...</div>
+            </div>
+            <div class="library-device-bottom-area">
+                <div class="library-device-download-area">
+                    <form method="post" action="https://maxforlive.com/download.php">
+                                                    <input type="hidden" name="id" value="8357">
+                                                <input class="button" type="submit" name="submit" value="Download Device">
+                    </form>
+                                            59996 <i class="fas fa-download"></i>
+                                        66 <i class="fas fa-comments"></i>
+                </div>
+            </div>
+        </div>
+                <div class="device-item">
+            <div class="device-image">
+                <a href="https://maxforlive.com/library/device/5228/ml.Distance">
+                    <div class="thumbnail">
+                        <img src="./Max for Live Community Resource_files/saved_resource(46)" onerror="this.onerror=null; this.src=&#39;/images/noDeviceScreenshot.png&#39;;">
+                    </div>
+                </a>
+            </div>
+            <div class="device-info">
+                <div class="date-time-container">
+                    <span class="month">Jan</span>
+                    <span class="day">26</span>
+                </div>
+                <a href="https://maxforlive.com/library/device/5228/ml.Distance">ml.Distance</a>
+                <br>
+                By <a href="https://maxforlive.com/profile/user/alkman">alkman</a>
+                <div class="library-device-description">Alternative graphical interface for Robert Henke's ml.Dista...</div>
+            </div>
+            <div class="library-device-bottom-area">
+                <div class="library-device-download-area">
+                    <form method="post" action="https://maxforlive.com/download.php">
+                                                    <input type="hidden" name="id" value="5228">
+                                                <input class="button" type="submit" name="submit" value="Download Device">
+                    </form>
+                                            55932 <i class="fas fa-download"></i>
+                                        19 <i class="fas fa-comments"></i>
+                </div>
+            </div>
+        </div>
+              </div>
+   </div>
+
+<div class="browse-buttons">
+    <a href="https://maxforlive.com/library/index.php?tag=all">
+        <i class="fa-regular fa-hard-drive"></i>
+        View Device Library
+    </a>
+</div>
+        </main>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+  <nav>
+    <ul class="footer-navigation">
+      <li><a href="https://cycling74.com/">© 2026 Cycling '74</a></li>
+      <li><a href="https://maxforlive.com/terms.php">Terms and Conditions</a></li>
+      <li><a href="https://maxforlive.com/privacy-policy.php">Privacy Policy</a></li>
+      <li><a href="https://ableton.com/">Go to Ableton.com</a></li>
+    </ul>
+  </nav>
+</footer>
+
+<style>
+
+:root {
+  --footer-height: 45px;
+}
+
+footer {
+  width: 100%;
+  padding: 0;
+  height: var(--footer-height);
+}
+
+footer nav {
+  max-width: 1200px;
+  padding: 0;
+  margin: 0 auto;
+  height: var(--footer-height);
+  display: grid;
+  place-content: center;
+}
+
+footer, footer nav {
+  background-color: #232323;
+}
+
+.footer-navigation {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 2em;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-navigation a {
+  font-size: 0.8rem;
+  color: #ffffff !important;
+}
+
+.footer-navigation li {
+  margin-bottom: 0em;
+}
+
+@media screen and (max-width: 768px) {
+  footer nav {
+    height: auto;
+  }
+  .footer-navigation {
+    flex-direction: column;
+    gap: 1em;
+  }
+}
+
+</style>
+
+<div id="cookie-consent" style="display: block;">
+    <div class="cookie-consent-desc">
+        <strong>This website uses cookies.</strong>
+        <br>
+        Clicking “Accept” means you consent to your data being processed and you’ll let us use cookies and other technologies to process your personal information to personalize and enhance your experience.
+        Click “Close” to deny consent and continue with technically required cookies that are essential for the website to function.
+    </div>
+    <div class="cookie-consent-actions">
+        <a href="https://maxforlive.com/privacy-policy.php">Privacy Policy</a>
+        <button id="cookie-consent-close">Close</button>
+        <button id="cookie-consent-accept">Accept</button>
+    </div>
+</div>
+
+
+</body></html>

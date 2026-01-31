@@ -1,0 +1,815 @@
+{
+	"patcher" : 	{
+		"fileversion" : 1,
+		"appversion" : 		{
+			"major" : 8,
+			"minor" : 5,
+			"revision" : 6,
+			"architecture" : "x64",
+			"modernui" : 1
+		}
+,
+		"classnamespace" : "box",
+		"rect" : [ 100.0, 100.0, 1000.0, 700.0 ],
+		"bglocked" : 0,
+		"openinpresentation" : 1,
+		"default_fontsize" : 12.0,
+		"default_fontface" : 0,
+		"default_fontname" : "Arial",
+		"gridonopen" : 1,
+		"gridsize" : [ 15.0, 15.0 ],
+		"gridsnaponopen" : 1,
+		"objectsnaponopen" : 1,
+		"statusbarvisible" : 2,
+		"toolbarvisible" : 1,
+		"lefttoolbarpinned" : 0,
+		"toptoolbarpinned" : 0,
+		"righttoolbarpinned" : 0,
+		"bottomtoolbarpinned" : 0,
+		"toolbars_unpinned_last_save" : 0,
+		"tallnewobj" : 0,
+		"boxanimatetime" : 200,
+		"enablehscroll" : 1,
+		"enablevscroll" : 1,
+		"devicewidth" : 320.0,
+		"description" : "Generate bass notes following kick drum patterns with harmonic awareness",
+		"digest" : "Bass Follower - Kick-triggered bass generator",
+		"tags" : "bass, follower, drums, harmony",
+		"style" : "",
+		"subpatcher_template" : "",
+		"assistshowspatchername" : 0,
+		"boxes" : [ 			{
+				"box" : 				{
+					"maxclass" : "comment",
+					"text" : "BASS FOLLOWER v1.0",
+					"fontsize" : 16.0,
+					"fontface" : 1,
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 30.0, 10.0, 250.0, 24.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 10.0, 10.0, 220.0, 24.0 ],
+					"textcolor" : [ 0.0, 0.8, 0.4, 1.0 ],
+					"id" : "obj-title"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"maxclass" : "comment",
+					"text" : "Kick → Bass Generator",
+					"fontsize" : 10.0,
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 30.0, 35.0, 200.0, 18.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 10.0, 32.0, 150.0, 18.0 ],
+					"textcolor" : [ 0.5, 0.5, 0.5, 1.0 ],
+					"id" : "obj-subtitle"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"maxclass" : "newobj",
+					"text" : "loadbang",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"patching_rect" : [ 30.0, 70.0, 60.0, 22.0 ],
+					"id" : "obj-loadbang"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"maxclass" : "newobj",
+					"text" : "js bass_follower.js",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 200.0, 300.0, 150.0, 22.0 ],
+					"id" : "obj-bass-follower"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"maxclass" : "newobj",
+					"text" : "js arranger_bridge.js",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ 400.0, 150.0, 150.0, 22.0 ],
+					"id" : "obj-arranger-bridge"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"maxclass" : "newobj",
+					"text" : "midiin",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "int" ],
+					"patching_rect" : [ 30.0, 150.0, 60.0, 22.0 ],
+					"id" : "obj-midiin"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"maxclass" : "newobj",
+					"text" : "notein",
+					"numinlets" : 1,
+					"numoutlets" : 3,
+					"outlettype" : [ "int", "int", "int" ],
+					"patching_rect" : [ 30.0, 190.0, 100.0, 22.0 ],
+					"id" : "obj-notein"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"maxclass" : "newobj",
+					"text" : "route 35 36",
+					"numinlets" : 1,
+					"numoutlets" : 3,
+					"outlettype" : [ "", "", "" ],
+					"patching_rect" : [ 30.0, 230.0, 100.0, 22.0 ],
+					"id" : "obj-route-kick"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"maxclass" : "newobj",
+					"text" : "live.thisdevice",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ 600.0, 70.0, 100.0, 22.0 ],
+					"id" : "obj-thisdevice"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"maxclass" : "newobj",
+					"text" : "route beat bar",
+					"numinlets" : 1,
+					"numoutlets" : 3,
+					"outlettype" : [ "", "", "" ],
+					"patching_rect" : [ 600.0, 110.0, 100.0, 22.0 ],
+					"id" : "obj-route-transport"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"maxclass" : "newobj",
+					"text" : "/ 4.",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "float" ],
+					"patching_rect" : [ 600.0, 150.0, 40.0, 22.0 ],
+					"id" : "obj-beat-div"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"maxclass" : "newobj",
+					"text" : "prepend onBar",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 720.0, 150.0, 100.0, 22.0 ],
+					"id" : "obj-bar-msg"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"maxclass" : "newobj",
+					"text" : "pack i i f",
+					"numinlets" : 3,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 30.0, 270.0, 80.0, 22.0 ],
+					"id" : "obj-pack-kick"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"maxclass" : "newobj",
+					"text" : "prepend onKickNote",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 30.0, 310.0, 130.0, 22.0 ],
+					"id" : "obj-kick-msg"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"maxclass" : "newobj",
+					"text" : "unpack i i i i i",
+					"numinlets" : 1,
+					"numoutlets" : 5,
+					"outlettype" : [ "int", "int", "int", "int", "int" ],
+					"patching_rect" : [ 200.0, 350.0, 150.0, 22.0 ],
+					"id" : "obj-unpack-bass"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"maxclass" : "newobj",
+					"text" : "makenote 100 10",
+					"numinlets" : 3,
+					"numoutlets" : 2,
+					"outlettype" : [ "int", "int" ],
+					"patching_rect" : [ 200.0, 400.0, 120.0, 22.0 ],
+					"id" : "obj-makenote"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"maxclass" : "newobj",
+					"text" : "midiout 2",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 200.0, 450.0, 70.0, 22.0 ],
+					"id" : "obj-midiout"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"maxclass" : "comment",
+					"text" : "KEY",
+					"fontsize" : 10.0,
+					"fontface" : 1,
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 100.0, 500.0, 40.0, 18.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 10.0, 55.0, 40.0, 18.0 ],
+					"id" : "obj-key-label"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"maxclass" : "live.menu",
+					"varname" : "key_selector",
+					"parameter_enable" : 1,
+					"numinlets" : 1,
+					"numoutlets" : 3,
+					"outlettype" : [ "", "", "float" ],
+					"patching_rect" : [ 100.0, 520.0, 80.0, 20.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 10.0, 75.0, 60.0, 20.0 ],
+					"saved_attribute_attributes" : 					{
+						"valueof" : 						{
+							"parameter_enum" : [ "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" ],
+							"parameter_longname" : "key_selector",
+							"parameter_shortname" : "Key",
+							"parameter_type" : 2,
+							"parameter_initial" : [ 0.0 ]
+						}
+
+					}
+,
+					"id" : "obj-key-menu"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"maxclass" : "comment",
+					"text" : "SCALE",
+					"fontsize" : 10.0,
+					"fontface" : 1,
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 200.0, 500.0, 50.0, 18.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 80.0, 55.0, 50.0, 18.0 ],
+					"id" : "obj-scale-label"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"maxclass" : "live.menu",
+					"varname" : "scale_selector",
+					"parameter_enable" : 1,
+					"numinlets" : 1,
+					"numoutlets" : 3,
+					"outlettype" : [ "", "", "float" ],
+					"patching_rect" : [ 200.0, 520.0, 100.0, 20.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 80.0, 75.0, 90.0, 20.0 ],
+					"saved_attribute_attributes" : 					{
+						"valueof" : 						{
+							"parameter_enum" : [ "Major", "Minor", "Dorian", "Phrygian", "Lydian", "Mixolydian", "Locrian" ],
+							"parameter_longname" : "scale_selector",
+							"parameter_shortname" : "Scale",
+							"parameter_type" : 2,
+							"parameter_initial" : [ 0.0 ]
+						}
+
+					}
+,
+					"id" : "obj-scale-menu"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"maxclass" : "live.dial",
+					"varname" : "velocity_threshold",
+					"parameter_enable" : 1,
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "float" ],
+					"patching_rect" : [ 100.0, 570.0, 50.0, 60.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 10.0, 110.0, 50.0, 60.0 ],
+					"saved_attribute_attributes" : 					{
+						"valueof" : 						{
+							"parameter_longname" : "velocity_threshold",
+							"parameter_shortname" : "Threshold",
+							"parameter_type" : 0,
+							"parameter_mmin" : 1.0,
+							"parameter_mmax" : 127.0,
+							"parameter_initial" : [ 80.0 ],
+							"parameter_unitstyle" : 0
+						}
+
+					}
+,
+					"id" : "obj-vel-threshold"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"maxclass" : "live.dial",
+					"varname" : "bass_octave",
+					"parameter_enable" : 1,
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "float" ],
+					"patching_rect" : [ 170.0, 570.0, 50.0, 60.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 70.0, 110.0, 50.0, 60.0 ],
+					"saved_attribute_attributes" : 					{
+						"valueof" : 						{
+							"parameter_longname" : "bass_octave",
+							"parameter_shortname" : "Octave",
+							"parameter_type" : 1,
+							"parameter_mmin" : 0.0,
+							"parameter_mmax" : 5.0,
+							"parameter_initial" : [ 2.0 ],
+							"parameter_unitstyle" : 0
+						}
+
+					}
+,
+					"id" : "obj-bass-octave"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"maxclass" : "live.dial",
+					"varname" : "velocity_scale",
+					"parameter_enable" : 1,
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "float" ],
+					"patching_rect" : [ 240.0, 570.0, 50.0, 60.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 130.0, 110.0, 50.0, 60.0 ],
+					"saved_attribute_attributes" : 					{
+						"valueof" : 						{
+							"parameter_longname" : "velocity_scale",
+							"parameter_shortname" : "Vel Scale",
+							"parameter_type" : 0,
+							"parameter_mmin" : 0.1,
+							"parameter_mmax" : 2.0,
+							"parameter_initial" : [ 0.8 ],
+							"parameter_unitstyle" : 1
+						}
+
+					}
+,
+					"id" : "obj-vel-scale"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"maxclass" : "live.toggle",
+					"varname" : "use_root_notes",
+					"parameter_enable" : 1,
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 310.0, 570.0, 20.0, 20.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 190.0, 110.0, 20.0, 20.0 ],
+					"saved_attribute_attributes" : 					{
+						"valueof" : 						{
+							"parameter_longname" : "use_root_notes",
+							"parameter_shortname" : "Roots",
+							"parameter_type" : 2,
+							"parameter_enum" : [ "off", "on" ],
+							"parameter_initial" : [ 1.0 ]
+						}
+
+					}
+,
+					"id" : "obj-use-roots"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"maxclass" : "comment",
+					"text" : "Root Notes",
+					"fontsize" : 9.0,
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 310.0, 595.0, 70.0, 17.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 190.0, 135.0, 70.0, 17.0 ],
+					"id" : "obj-roots-label"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"maxclass" : "newobj",
+					"text" : "prepend setKey",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 100.0, 550.0, 100.0, 22.0 ],
+					"id" : "obj-key-prep"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"maxclass" : "newobj",
+					"text" : "prepend setScale",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 200.0, 550.0, 110.0, 22.0 ],
+					"id" : "obj-scale-prep"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"maxclass" : "newobj",
+					"text" : "prepend setVelocityThreshold",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 100.0, 640.0, 180.0, 22.0 ],
+					"id" : "obj-threshold-prep"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"maxclass" : "newobj",
+					"text" : "prepend setBassOctave",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 170.0, 640.0, 150.0, 22.0 ],
+					"id" : "obj-octave-prep"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"maxclass" : "newobj",
+					"text" : "prepend setVelocityScale",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 240.0, 640.0, 160.0, 22.0 ],
+					"id" : "obj-velscale-prep"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"maxclass" : "newobj",
+					"text" : "prepend setUseRootNotes",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 310.0, 640.0, 160.0, 22.0 ],
+					"id" : "obj-roots-prep"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"maxclass" : "live.text",
+					"varname" : "arranger_status",
+					"text" : "Arranger: Disconnected",
+					"texton" : "Arranger: Connected",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ 400.0, 200.0, 150.0, 20.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 10.0, 180.0, 200.0, 20.0 ],
+					"mode" : 0,
+					"id" : "obj-arranger-status"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"maxclass" : "panel",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 600.0, 600.0, 128.0, 128.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 0.0, 0.0, 320.0, 210.0 ],
+					"bgcolor" : [ 0.1, 0.1, 0.1, 1.0 ],
+					"id" : "obj-bg"
+				}
+
+			}
+ ],
+		"lines" : [ 			{
+				"patchline" : 				{
+					"source" : [ "obj-loadbang", 0 ],
+					"destination" : [ "obj-bass-follower", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"source" : [ "obj-loadbang", 0 ],
+					"destination" : [ "obj-arranger-bridge", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"source" : [ "obj-midiin", 0 ],
+					"destination" : [ "obj-notein", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"source" : [ "obj-notein", 0 ],
+					"destination" : [ "obj-route-kick", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"source" : [ "obj-notein", 1 ],
+					"destination" : [ "obj-pack-kick", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"source" : [ "obj-route-kick", 0 ],
+					"destination" : [ "obj-pack-kick", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"source" : [ "obj-route-kick", 1 ],
+					"destination" : [ "obj-pack-kick", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"source" : [ "obj-beat-div", 0 ],
+					"destination" : [ "obj-pack-kick", 2 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"source" : [ "obj-pack-kick", 0 ],
+					"destination" : [ "obj-kick-msg", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"source" : [ "obj-kick-msg", 0 ],
+					"destination" : [ "obj-bass-follower", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"source" : [ "obj-thisdevice", 0 ],
+					"destination" : [ "obj-route-transport", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"source" : [ "obj-route-transport", 0 ],
+					"destination" : [ "obj-beat-div", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"source" : [ "obj-route-transport", 1 ],
+					"destination" : [ "obj-bar-msg", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"source" : [ "obj-bar-msg", 0 ],
+					"destination" : [ "obj-bass-follower", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"source" : [ "obj-bar-msg", 0 ],
+					"destination" : [ "obj-arranger-bridge", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"source" : [ "obj-arranger-bridge", 0 ],
+					"destination" : [ "obj-bass-follower", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"source" : [ "obj-arranger-bridge", 1 ],
+					"destination" : [ "obj-arranger-status", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"source" : [ "obj-bass-follower", 0 ],
+					"destination" : [ "obj-unpack-bass", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"source" : [ "obj-unpack-bass", 0 ],
+					"destination" : [ "obj-makenote", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"source" : [ "obj-unpack-bass", 1 ],
+					"destination" : [ "obj-makenote", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"source" : [ "obj-makenote", 0 ],
+					"destination" : [ "obj-midiout", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"source" : [ "obj-makenote", 1 ],
+					"destination" : [ "obj-midiout", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"source" : [ "obj-key-menu", 0 ],
+					"destination" : [ "obj-key-prep", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"source" : [ "obj-scale-menu", 0 ],
+					"destination" : [ "obj-scale-prep", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"source" : [ "obj-vel-threshold", 0 ],
+					"destination" : [ "obj-threshold-prep", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"source" : [ "obj-bass-octave", 0 ],
+					"destination" : [ "obj-octave-prep", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"source" : [ "obj-vel-scale", 0 ],
+					"destination" : [ "obj-velscale-prep", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"source" : [ "obj-use-roots", 0 ],
+					"destination" : [ "obj-roots-prep", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"source" : [ "obj-key-prep", 0 ],
+					"destination" : [ "obj-bass-follower", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"source" : [ "obj-key-prep", 0 ],
+					"destination" : [ "obj-arranger-bridge", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"source" : [ "obj-scale-prep", 0 ],
+					"destination" : [ "obj-bass-follower", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"source" : [ "obj-scale-prep", 0 ],
+					"destination" : [ "obj-arranger-bridge", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"source" : [ "obj-threshold-prep", 0 ],
+					"destination" : [ "obj-bass-follower", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"source" : [ "obj-octave-prep", 0 ],
+					"destination" : [ "obj-bass-follower", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"source" : [ "obj-velscale-prep", 0 ],
+					"destination" : [ "obj-bass-follower", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"source" : [ "obj-roots-prep", 0 ],
+					"destination" : [ "obj-bass-follower", 0 ]
+				}
+
+			}
+ ]
+	}
+
+}

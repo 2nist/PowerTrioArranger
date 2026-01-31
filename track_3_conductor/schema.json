@@ -1,0 +1,66 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Power Trio Global Brain Schema",
+  "description": "Canonical structure for ---power_trio_brain. Aligned with Application Docs/DICTIONARY_SCHEMA.json.",
+  "type": "object",
+  "properties": {
+    "transport": {
+      "type": "object",
+      "properties": {
+        "is_playing": { "type": "integer", "minimum": 0, "maximum": 1 },
+        "global_tempo": { "type": "number", "minimum": 0 },
+        "current_bar": { "type": "integer", "minimum": 0 },
+        "current_beat": { "type": "number", "minimum": 1, "maximum": 4.99, "description": "1-based musical time: 1.0 = bar start, 2.0, 3.0, 4.0" },
+        "current_chord": { "type": "object", "description": "Chord currently playing (read by Bass/Arps)" }
+      }
+    },
+    "clipboard": {
+      "type": "object",
+      "properties": {
+        "active_chord": {
+          "type": "object",
+          "properties": {
+            "root_midi": { "type": "integer" },
+            "root_name": { "type": "string" },
+            "quality": { "type": "string" },
+            "degree": { "type": "string" },
+            "midi_notes": { "type": "array", "items": { "type": "integer" } },
+            "voicing_style": { "type": "string", "enum": ["closed", "open"] }
+          }
+        }
+      }
+    },
+    "sequencer_buffer": {
+      "type": "object",
+      "properties": {
+        "section_name": { "type": "string" },
+        "length_beats": { "type": "number" },
+        "events": {
+          "type": "array",
+          "minItems": 64,
+          "maxItems": 64,
+          "items": {
+            "oneOf": [
+              { "type": "null" },
+              { "type": "object", "description": "Chord object (root_midi, root_name, quality, degree, midi_notes, voicing_style)" }
+            ]
+          }
+        }
+      }
+    },
+    "song_structure": {
+      "type": "object",
+      "properties": {
+        "timeline": { "type": "array", "items": { "type": "string" }, "description": "Pattern keys in order (slot index)" },
+        "pattern_bank": { "type": "object", "additionalProperties": true, "description": "pattern_0, pattern_1, ... -> sequencer_buffer-shaped data" }
+      }
+    },
+    "rhythm_pulses": {
+      "type": "object",
+      "properties": {
+        "kick_pulse": { "type": "integer", "minimum": 0, "maximum": 1 },
+        "snare_pulse": { "type": "integer", "minimum": 0, "maximum": 1 }
+      }
+    }
+  }
+}
