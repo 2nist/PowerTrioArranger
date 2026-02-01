@@ -3,11 +3,16 @@
  * Schema aligned with Application Docs/DICTIONARY_SCHEMA.json.
  * Run from Max (node.script) on project load, or: node shared/dict_init.js
  * Reset during dev: node shared/dict_init.js --reset
+ *
+ * Async Init: Outlets "running" 1 when Node is ready and after init.
+ * Wire [route running] -> [select 1] -> [prepend init] -> [node.script] inlet
+ * for patchers that delay init until Node is ready.
  */
 
 const DICT_NAME = "---power_trio_brain";
 
 // Canonical schema: transport (1-based beat), clipboard (voicing_style string), sequencer_buffer (64 events), song_structure (timeline + pattern_bank), rhythm_pulses (0/1)
+// Updated 2026-02-01: Added duration_beats to clipboard and chord events for arrangement workflow
 const SCHEMA = {
   transport: {
     is_playing: 0,
@@ -25,11 +30,20 @@ const SCHEMA = {
       midi_notes: [60, 64, 67, 71],
       voicing_style: "open", // string only: "closed" | "open" (Constraint 2)
     },
+    duration_beats: 4, // Duration for next locked chord (1, 2, 4, 8, 16, 32, 64 beats)
   },
   sequencer_buffer: {
     section_name: "Working_Draft",
     length_beats: 16.0,
-    events: Array(64).fill(null), // 64 slots; null = empty, else { step_index, chord_ref }
+    // Events array: each slot is null (empty) or a chord event object
+    // Chord event: { chord_ref: {...}, duration_beats: N, slot_index: N }
+    events: Array(64).fill(null),
+  },
+  // Progression: ordered list of locked chords with durations
+  progression: {
+    name: "Untitled",
+    total_beats: 0, // Sum of all chord durations
+    chords: [], // Array of { chord_ref: {...}, duration_beats: N, slot_index: N }
   },
   song_structure: {
     timeline: [],
@@ -38,6 +52,8 @@ const SCHEMA = {
   rhythm_pulses: {
     kick_pulse: 0, // 0 or 1 (Constraint: integer, not boolean)
     snare_pulse: 0,
+    hats_pulse: 0, // hi-hats / ride (ARCHITECTURE: 42, 44, 46, 51, 59)
+    perc_pulse: 0, // percussion (ARCHITECTURE: 41, 43, 45, 47, 48, 49, 52, 55, 57)
   },
 };
 
@@ -49,43 +65,45 @@ function getSchema() {
 function initFromMax() {
   try {
     const maxApi = require("max-api");
-    maxApi.outlet("dict", "clear", DICT_NAME);
+    maxApi.outlet("dict", "clear");
     maxApi.outlet(
       "dict",
       "replace",
-      DICT_NAME,
       "transport",
       JSON.stringify(SCHEMA.transport),
     );
     maxApi.outlet(
       "dict",
       "replace",
-      DICT_NAME,
       "clipboard",
       JSON.stringify(SCHEMA.clipboard),
     );
     maxApi.outlet(
       "dict",
       "replace",
-      DICT_NAME,
       "sequencer_buffer",
       JSON.stringify(SCHEMA.sequencer_buffer),
     );
     maxApi.outlet(
       "dict",
       "replace",
-      DICT_NAME,
+      "progression",
+      JSON.stringify(SCHEMA.progression),
+    );
+    maxApi.outlet(
+      "dict",
+      "replace",
       "song_structure",
       JSON.stringify(SCHEMA.song_structure),
     );
     maxApi.outlet(
       "dict",
       "replace",
-      DICT_NAME,
       "rhythm_pulses",
       JSON.stringify(SCHEMA.rhythm_pulses),
     );
-    maxApi.post("---power_trio_brain initialized with schema.");
+    maxApi.post("Power Trio Brain Initialized: Schema Loaded.");
+    maxApi.outlet("running", 1);
   } catch (e) {
     // Not in Max - standalone
     console.log("---power_trio_brain schema (run from Max to apply):");
@@ -103,11 +121,15 @@ function resetFromMax() {
   }
 }
 
-// When run inside Max: register handlers so Max can send "init" or "reset"
+// When run inside Max: register handlers and self-initialize on load
 try {
   const maxApi = require("max-api");
   maxApi.addHandler("init", () => initFromMax());
   maxApi.addHandler("reset", () => resetFromMax());
+  // Signal Node is ready (for async init loop in patcher)
+  maxApi.outlet("running", 1);
+  // Self-initialize when script loads - no need to wait for "init" message
+  initFromMax();
 } catch (e) {
   // Not in Max - ignore
 }

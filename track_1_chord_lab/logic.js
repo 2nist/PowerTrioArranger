@@ -1,5 +1,11 @@
 /**
  * Track 1 - Chord Lab: APC64 grid → harmonic data → clipboard::active_chord
+ *
+ * Supports two input modes:
+ * 1. Grid mode (Custom): Single note = degree + row → build chord from theory
+ * 2. Note mode (Ableton): Multi-note chord → infer root + quality from intervals
+ *
+ * Updated 2026-02-01: Added multi-note capture, LED/display feedback
  */
 
 const maxApi = require("max-api");
@@ -13,10 +19,13 @@ const { SCALE_INTERVALS, CHORD_ROWS, getChordIntervals } = require(
 const { setActiveChord } = require(
   path.join(__dirname, "..", "shared", "dict_helpers.js"),
 );
+const comms = require(
+  path.join(__dirname, "..", "shared", "apc64_comms.js"),
+);
 
-const DICT_NAME = "---power_trio_brain";
 const BASE_MIDI = 60; // C4
 const ROOT_NAMES = ["C", "D", "E", "F", "G", "A", "B"];
+const NOTE_NAMES = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
 // Degree index 0-6 → Roman numeral (I, ii, ...)
 const DEGREE_ROMAN = ["I", "ii", "iii", "IV", "V", "vi", "vii°"];
 // Degree → mode for quality string: 0,3,4 = major; 1,2,5 = minor; 6 = diminished
@@ -34,6 +43,118 @@ let voicingSpreadValue = 0;
 let inversionValue = 0;
 let lastColumn = 0;
 let lastRow = 1;
+
+// ============================================
+// MULTI-NOTE CHORD CAPTURE (for APC64 Note Mode)
+// ============================================
+// When APC64 is in Note Mode with chord type 1-3-5, it sends multiple
+// simultaneous note-ons. We buffer them and infer the chord.
+
+let chordBuffer = [];
+let chordTimer = null;
+const CHORD_BUFFER_MS = 25; // Buffer window for simultaneous notes
+let lastCapturedPadNote = null; // For LED feedback
+
+// Interval-to-quality mapping (semitones from root)
+const QUALITY_MAP = {
+  "4,7": "maj",
+  "3,7": "min",
+  "3,6": "dim",
+  "4,8": "aug",
+  "4,7,11": "maj7",
+  "4,7,10": "dom7",
+  "3,7,10": "min7",
+  "3,6,9": "dim7",
+  "3,6,10": "m7b5",
+  "2,7": "sus2",
+  "5,7": "sus4",
+  "4,7,11,14": "maj9",
+  "4,7,10,14": "dom9",
+  "3,7,10,14": "min9",
+};
+
+/**
+ * Infer chord quality from intervals (semitones from root)
+ */
+function inferQuality(intervals) {
+  const key = intervals.join(",");
+  return QUALITY_MAP[key] || "?";
+}
+
+/**
+ * Get note name from MIDI number
+ */
+function midiToNoteName(midi) {
+  return NOTE_NAMES[midi % 12];
+}
+
+/**
+ * Process buffered notes as a chord (for Note Mode multi-note input)
+ */
+function processChordBuffer() {
+  if (chordBuffer.length === 0) return;
+
+  // Sort notes
+  const notes = [...chordBuffer].sort((a, b) => a - b);
+  chordBuffer = [];
+
+  if (notes.length === 1) {
+    // Single note - might be a duration pad or other control
+    // Don't process as chord
+    return;
+  }
+
+  // Calculate intervals from root
+  const root = notes[0];
+  const intervals = notes.slice(1).map((n) => n - root);
+
+  // Infer quality
+  const quality = inferQuality(intervals);
+  const rootName = midiToNoteName(root);
+
+  // Build chord object
+  const chord = {
+    root_midi: root,
+    root_name: rootName,
+    quality: quality,
+    degree: "?", // Unknown degree when using Note Mode (not scale-based)
+    midi_notes: notes,
+    voicing_style: voicingSpreadValue >= 64 ? "open" : "closed",
+  };
+
+  // Apply CC modifiers (extension/alteration)
+  applyChordModifiers(chord);
+
+  // Store in clipboard
+  maxApi.outlet(
+    "dict",
+    "replace",
+    "clipboard::active_chord",
+    JSON.stringify(chord),
+  );
+
+  // LED feedback: light up a pad to show chord captured
+  // Use pad 56 (top-left area) as chord indicator
+  comms.setLedColor(maxApi, 56, HW.COLOR_BLUE, HW.LED_CH_FULL);
+
+  // Display feedback
+  const displayText = `${chord.root_name}${chord.quality}`;
+  comms.updateDisplay(maxApi, "Chord Lab", displayText, "Captured");
+
+  maxApi.post(`Chord captured: ${displayText} [${notes.join(", ")}]`);
+}
+
+/**
+ * Apply CC modifiers to extend/alter chord
+ * This lets faders add 7ths, 9ths, etc. to the base triad
+ */
+function applyChordModifiers(chord) {
+  // Future: Use additional CCs to add extensions
+  // For now, just apply voicing spread
+  if (voicingSpreadValue > 31) {
+    chord.midi_notes = applyVoicingSpread(chord.midi_notes, voicingSpreadValue);
+  }
+}
 
 /**
  * Chord quality string for display (root + quality).
@@ -119,23 +240,69 @@ function applyInversion(notes, invValue) {
   return rotated.sort((a, b) => a - b);
 }
 
-// Grid pad presses (Note On)
+// ============================================
+// NOTE INPUT HANDLER
+// ============================================
+// Handles both:
+// 1. Grid mode (notes 36-75): Single note → degree + row → build chord
+// 2. Note mode (any range): Multi-note → buffer and infer chord
+
 maxApi.addHandler("note_input", (note, velocity) => {
   if (velocity <= 0) return;
-  const column = (note - 36) % 8;
-  const row = Math.floor((note - 36) / 8);
-  if (column > 6 || row > 4) return;
-  lastColumn = column;
-  lastRow = row;
-  const chord = buildChord(column, row);
-  if (chord) {
-    maxApi.outlet(
-      "dict",
-      "replace",
-      DICT_NAME,
-      "clipboard::active_chord",
-      JSON.stringify(chord),
-    );
+
+  // Check for Shift button
+  const shiftEvent = comms.updateShiftState(note, velocity);
+  if (shiftEvent) {
+    // Shift state changed - handled by Sequencer
+    return;
+  }
+
+  // Grid mode: notes 36-75 (7 columns x 5 rows)
+  if (note >= 36 && note <= 75) {
+    const column = (note - 36) % 8;
+    const row = Math.floor((note - 36) / 8);
+
+    // If within our chord grid (columns 0-6, rows 0-4)
+    if (column <= 6 && row <= 4) {
+      lastColumn = column;
+      lastRow = row;
+      const chord = buildChord(column, row);
+      if (chord) {
+        maxApi.outlet(
+          "dict",
+          "replace",
+          "clipboard::active_chord",
+          JSON.stringify(chord),
+        );
+
+        // LED feedback: light up the pressed pad
+        comms.setLedColor(maxApi, note - 36, HW.COLOR_BLUE, HW.LED_CH_FULL);
+        if (lastCapturedPadNote !== null && lastCapturedPadNote !== note - 36) {
+          comms.setLedOff(maxApi, lastCapturedPadNote);
+        }
+        lastCapturedPadNote = note - 36;
+
+        // Display feedback
+        const displayText = `${chord.root_name}${chord.quality}`;
+        comms.updateDisplay(maxApi, "Chord Lab", displayText, chord.degree);
+      }
+      return;
+    }
+  }
+
+  // Note mode: buffer notes for multi-note chord capture
+  // This handles when APC64 is in Note Mode sending chord notes (36-99 range)
+  if (note >= 36 && note <= 99) {
+    chordBuffer.push(note);
+
+    // Clear existing timer
+    if (chordTimer) clearTimeout(chordTimer);
+
+    // Set new timer to process buffer
+    chordTimer = setTimeout(() => {
+      processChordBuffer();
+      chordTimer = null;
+    }, CHORD_BUFFER_MS);
   }
 });
 
@@ -151,11 +318,17 @@ maxApi.addHandler("cc_input", (cc_number, value) => {
     maxApi.outlet(
       "dict",
       "replace",
-      DICT_NAME,
       "clipboard::active_chord",
       JSON.stringify(chord),
     );
   }
 });
 
-module.exports = { buildChord, applyVoicingSpread, applyInversion };
+module.exports = {
+  buildChord,
+  applyVoicingSpread,
+  applyInversion,
+  inferQuality,
+  midiToNoteName,
+  processChordBuffer,
+};

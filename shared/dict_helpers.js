@@ -12,7 +12,7 @@ const DICT_NAME = "---power_trio_brain";
  * @param {string} path - Key path using :: notation (e.g. 'transport::bpm')
  */
 function dictGet(path) {
-  maxApi.outlet("dict", "get", DICT_NAME, path);
+  maxApi.outlet("dict", "get", path);
 }
 
 /**
@@ -22,7 +22,7 @@ function dictGet(path) {
  */
 function dictReplace(path, value) {
   const out = typeof value === "object" ? JSON.stringify(value) : String(value);
-  maxApi.outlet("dict", "replace", DICT_NAME, path, out);
+  maxApi.outlet("dict", "replace", path, out);
 }
 
 /**
@@ -32,7 +32,7 @@ function dictReplace(path, value) {
  */
 function dictAppend(path, value) {
   const out = typeof value === "object" ? JSON.stringify(value) : String(value);
-  maxApi.outlet("dict", "append", DICT_NAME, path, out);
+  maxApi.outlet("dict", "append", path, out);
 }
 
 /**
@@ -95,7 +95,7 @@ function setSongStructure(value) {
 
 /**
  * Set rhythm pulse (kick or snare). Schema: 0 or 1 (integer), not boolean.
- * @param {string} pulse - 'kick_pulse' | 'snare_pulse'
+ * @param {string} pulse - 'kick_pulse' | 'snare_pulse' | 'hats_pulse' | 'perc_pulse'
  * @param {number|boolean} value - 0 or 1 (or true/false, normalized to 1/0)
  */
 function setRhythmPulse(pulse, value) {
