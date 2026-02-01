@@ -59,7 +59,9 @@
       "type": "object",
       "properties": {
         "kick_pulse": { "type": "integer", "minimum": 0, "maximum": 1 },
-        "snare_pulse": { "type": "integer", "minimum": 0, "maximum": 1 }
+        "snare_pulse": { "type": "integer", "minimum": 0, "maximum": 1 },
+        "hats_pulse": { "type": "integer", "minimum": 0, "maximum": 1, "description": "Hi-hat/ride (42, 44, 46, 51, 59)" },
+        "perc_pulse": { "type": "integer", "minimum": 0, "maximum": 1, "description": "Percussion (41, 43, 45, 47, 48, 49, 52, 55, 57)" }
       }
     }
   }

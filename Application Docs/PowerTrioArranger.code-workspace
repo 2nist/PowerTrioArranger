@@ -1,0 +1,38 @@
+{
+	"folders": [
+		{
+			"path": "../PowerTrioArranger"
+		},
+		{
+			"path": "."
+		},
+		{
+			"path": "../hardware"
+		},
+		{
+			"path": "../node_modules"
+		},
+		{
+			"path": "../shared"
+		},
+		{
+			"path": "../track_1_chord_lab"
+		},
+		{
+			"path": "../track_2_sequencer"
+		},
+		{
+			"path": "../track_3_conductor"
+		},
+		{
+			"path": "../track_4_drums"
+		},
+		{
+			"path": "../track_5_bass"
+		},
+		{
+			"path": "../../Music/Ableton/User Library/Presets/MIDI Effects/Max MIDI Effect/Imported"
+		}
+	],
+	"settings": {}
+}
