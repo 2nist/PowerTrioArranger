@@ -26,3 +26,4 @@ Output: `analysis/output/pattern_library.json`
 - Patterns begin evolving immediately
 - Adjust knobs to steer
 - Hit buttons to capture/loop/export
+**See:** `Application Docs/M4L_PRIMER.md` for a short M4L primer (node.script, dict, prepend, debugging).
