@@ -4,6 +4,11 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "test": "node test/run.js"
+    "test": "node test/run.js",
+    "lint": "eslint . --ext .js",
+    "pretest": "npm run lint"
+  },
+  "devDependencies": {
+    "eslint": "^8.49.0"
   }
 }

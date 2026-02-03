@@ -3,6 +3,7 @@ const { EventEmitter } = require('events');
 class SongArranger extends EventEmitter {
     constructor(options = {}) {
         super();
+        this.options = options;
         this.savedProgressions = {};
         this.songSections = {};
         this.songArrangement = [];
