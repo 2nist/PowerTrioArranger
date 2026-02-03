@@ -3,6 +3,20 @@
  * Monitors GrooveWanderer output and updates rhythm_pulses in ---power_trio_brain.
  * Schema: rhythm_pulses use 0/1 (integer), not boolean.
  * ARCHITECTURE: kick, snare, hats_ride, percussion (4 layers).
+ *
+ * REQUIRED MAX PATCHER WIRING:
+ * 
+ * INPUTS (to node.script left inlet):
+ *   [notein] → [prepend drum_trigger] → inlet (MIDI from GrooveWanderer)
+ *   OR: [r ---drum_triggers] → [prepend drum_trigger] → inlet
+ *
+ * OUTLETS (from node.script):
+ *   outlet → [route dict kick_pulse]
+ *      |         |        |
+ *      |         |        └→ [send ---kick_pulse_global] (to Bass Follower)
+ *      |         └→ [dict ---power_trio_brain]
+ *
+ * NOTE: No dict response loop needed (write-only operation)
  */
 
 const maxApi = require("max-api");
@@ -78,5 +92,8 @@ maxApi.addHandler("drum_trigger", (note, velocity) => {
 maxApi.addHandler("note_input", (note, velocity) => {
   handleDrumNote(note, velocity);
 });
+
+// Initialization
+maxApi.post("GrooveWanderer Bridge loaded. Monitoring drum triggers (notes 35-59).");
 
 module.exports = { onKickHit, onSnareHit, onHatsHit, onPercHit };

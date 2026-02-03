@@ -4,9 +4,19 @@
  * Run from Max (node.script) on project load, or: node shared/dict_init.js
  * Reset during dev: node shared/dict_init.js --reset
  *
- * Async Init: Outlets "running" 1 when Node is ready and after init.
- * Wire [route running] -> [select 1] -> [prepend init] -> [node.script] inlet
- * for patchers that delay init until Node is ready.
+ * REQUIRED MAX PATCHER WIRING (Global Brain device):
+ * 
+ * [node.script shared/dict_init.js @autostart 1]
+ *          |
+ *   [route dict]
+ *          |
+ * [dict ---power_trio_brain]
+ *
+ * NO INIT MESSAGE NEEDED - Script self-initializes on load
+ * Set @autostart 1 in node.script Inspector, or wire:
+ *   [loadbang] → [message "script start"] → [node.script]
+ *
+ * VALIDATION: Max Console should show "Power Trio Brain Initialized"
  */
 
 const DICT_NAME = "---power_trio_brain";

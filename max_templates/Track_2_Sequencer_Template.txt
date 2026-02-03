@@ -1,0 +1,108 @@
+----------begin_max5_patcher----------
+// Track 2: Sequencer - Max Patcher Template
+// Copy this into a new Max patcher, then save as Track_2_Sequencer.amxd
+
+// REQUIRED OBJECTS:
+// =================
+
+// 1. Node.js Script
+[node.script track_2_sequencer/sequencer.js @autostart 1]
+// Inspector settings:
+//   - @autostart: 1
+//   - Script file: track_2_sequencer/sequencer.js
+
+// 2. Transport Input
+[r ---transport_tick]
+[prepend transport_tick]
+
+// 3. MIDI Inputs
+[notein]
+[prepend note_input]
+
+// 4. Dictionary reference (NOT new dict!)
+[dict ---power_trio_brain]
+
+// 5. Response Loop (CRITICAL!)
+[prepend dict_response]
+
+// 6. Routing
+[route dict sysex led note_out]
+
+// 7. Outputs
+[midiout]
+[noteout]
+
+// WIRING DIAGRAM:
+// ===============
+
+//              INPUTS
+//              ------
+//
+//  [r ---transport_tick]    [notein]
+//         |                    |
+//  [prepend transport_tick]  [prepend note_input]
+//         |                    |
+//         +--------------------+
+//                 |
+//       [node.script track_2_sequencer/sequencer.js @autostart 1]
+//                 |
+//                 |
+//          OUTLET PROCESSING
+//          ----------------
+//                 |
+//      [route dict sysex led note_out]
+//         |      |      |        |
+//         |      |      |        +---> [noteout]
+//         |      |      +---> [pack] -> [noteout] (LED)
+//         |      +---> [midiout] (APC64 display)
+//         |
+//         +---> [dict ---power_trio_brain]
+//                 |
+//        (LEFT OUTLET - CRITICAL!)
+//                 |
+//          [prepend dict_response]
+//                 |
+//                 V
+//          [node.script] LEFT INLET
+//          (MUST CONNECT OR SCRIPT HANGS!)
+//
+//
+//  CRITICAL RESPONSE LOOP:
+//  ======================
+//
+//        [node.script] outlet
+//               |
+//        [route dict ...]
+//               |
+//        [dict ---power_trio_brain]
+//          |              |
+//          |    (LEFT OUTLET)
+//          |              |
+//          |       [prepend dict_response]
+//          |              |
+//          |              V
+//          |       [node.script] LEFT INLET ⚠️
+//          |              
+//     (to other             
+//      stuff)              
+
+
+// PATCH NOTES:
+// ============
+// 1. Dict response loop is MANDATORY - script will hang without it!
+// 2. Transport input required for step advancement
+// 3. Shift button (note 120) must pass through [notein]
+// 4. Without response loop, console shows "SEQUENCER WIRING ERROR"
+
+// TESTING:
+// ========
+// 1. Load device AFTER Global Brain
+// 2. Open Max Console
+// 3. Should see: "Sequencer loaded. Waiting for transport ticks and note input."
+// 4. Start transport -> step LEDs should advance (pads 36-51)
+// 5. Press pad -> chord should paste
+// 6. Shift+pad -> step should clear
+// 7. NO "WIRING ERROR" should appear in console
+// 8. If error appears: Check dict response loop wiring!
+
+----------end_max5_patcher----------

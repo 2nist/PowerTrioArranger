@@ -6,6 +6,24 @@
  * 2. Note mode (Ableton): Multi-note chord → infer root + quality from intervals
  *
  * Updated 2026-02-01: Added multi-note capture, LED/display feedback
+ *
+ * REQUIRED MAX PATCHER WIRING:
+ * 
+ * INPUTS (to node.script left inlet):
+ *   [notein] → [prepend note_input] → inlet (for pad presses)
+ *   [ctlin] → [prepend cc_input] → inlet (for CC 20, 21 faders)
+ *
+ * OUTLETS (from node.script):
+ *   outlet → [route dict sysex led note_out]
+ *      |         |      |     |        |
+ *      |         |      |     |        └→ [noteout] (LED feedback)
+ *      |         |      |     └→ [pack] → [noteout] (LED control)
+ *      |         |      └→ [midiout] (APC64 display SysEx)
+ *      |         └→ [dict ---power_trio_brain]
+ *      └→ [dict ---power_trio_brain] left outlet → [prepend dict_response] → inlet
+ *
+ * OPTIONAL (for future dict reads):
+ *   [dict] left outlet → [prepend dict_response] → [node.script] left inlet
  */
 
 const maxApi = require("max-api");
@@ -323,6 +341,14 @@ maxApi.addHandler("cc_input", (cc_number, value) => {
     );
   }
 });
+
+// Initialization: Send startup message to verify APC64 output wiring
+maxApi.post("Chord Lab loaded. Listening for grid input (notes 36-75).");
+try {
+  comms.updateDisplay(maxApi, "Chord Lab", "Ready", "Press pad");
+} catch (e) {
+  maxApi.post("Note: APC64 display output not wired (optional)");
+}
 
 module.exports = {
   buildChord,

@@ -1,0 +1,85 @@
+----------begin_max5_patcher----------
+// Track 4: GrooveWanderer Bridge - Max Patcher Template
+// Copy this into a new Max patcher, then save as Track_4_Bridge.amxd
+
+// REQUIRED OBJECTS:
+// =================
+
+// 1. Node.js Script
+[node.script track_4_drums/groove_wanderer_bridge.js @autostart 1]
+// Inspector settings:
+//   - @autostart: 1
+//   - Script file: track_4_drums/groove_wanderer_bridge.js
+
+// 2. MIDI Input (from GrooveWanderer)
+[notein]
+[prepend drum_trigger]
+
+// 3. Dictionary reference
+[dict ---power_trio_brain]
+
+// 4. Routing
+[route dict kick_pulse]
+
+// 5. Global send for kick trigger
+[send ---kick_pulse_global]
+
+// WIRING DIAGRAM:
+// ===============
+
+//              INPUTS
+//              ------
+//
+//    [notein] (from GrooveWanderer MIDI)
+//       |
+//  [prepend drum_trigger]
+//       |
+//       |
+//  [node.script track_4_drums/groove_wanderer_bridge.js @autostart 1]
+//       |
+//       |
+//    OUTLET PROCESSING
+//    ----------------
+//       |
+//  [route dict kick_pulse]
+//      |         |
+//      |         +---> [send ---kick_pulse_global] (to Bass Follower)
+//      |
+//      +---> [dict ---power_trio_brain]
+//
+//
+// ALTERNATIVE INPUT METHOD:
+// ========================
+//
+//  [r ---drum_triggers] (if GrooveWanderer sends globally)
+//       |
+//  [prepend drum_trigger]
+//       |
+//  [node.script ...]
+
+
+// PATCH NOTES:
+// ============
+// 1. Input must receive MIDI from GrooveWanderer device
+// 2. Monitors kick (35, 36), snare (37, 38, 40), hats (42, 44, 46, 51, 59), perc (41, 43, 45, 47, 48, 49, 52, 55, 57)
+// 3. Updates rhythm_pulses in dict with 0/1 flags
+// 4. Sends kick trigger globally for Bass Follower to receive
+// 5. Dict response loop NOT needed (write-only operation)
+
+// TESTING:
+// ========
+// 1. Load device AFTER GrooveWanderer
+// 2. Open Max Console
+// 3. Should see: "GrooveWanderer Bridge loaded. Monitoring drum triggers (notes 35-59)."
+// 4. Play GrooveWanderer -> Bridge should receive MIDI notes
+// 5. Inspect dict: rhythm_pulses should update (kick_pulse, snare_pulse, hats_pulse, perc_pulse)
+// 6. When kick plays -> global send should fire (check with [r ---kick_pulse_global])
+
+// MIDI NOTE REFERENCE:
+// ===================
+// Kick: 35 (Acoustic Bass Drum), 36 (Bass Drum 1)
+// Snare: 37 (Side Stick), 38 (Acoustic Snare), 40 (Electric Snare)
+// Hats/Ride: 42 (Closed Hi-Hat), 44 (Pedal Hi-Hat), 46 (Open Hi-Hat), 51 (Ride Cymbal 1), 59 (Ride Cymbal 2)
+// Perc: 41 (Low Floor Tom), 43 (High Floor Tom), 45 (Low Tom), 47 (Low-Mid Tom), 48 (Hi-Mid Tom), 49 (Crash Cymbal 1), 52 (Chinese Cymbal), 55 (Splash Cymbal), 57 (Crash Cymbal 2)
+
+----------end_max5_patcher----------

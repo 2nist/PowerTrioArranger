@@ -1,0 +1,90 @@
+----------begin_max5_patcher----------
+// Track 1: Chord Lab - Max Patcher Template
+// Copy this into a new Max patcher, then save as Track_1_Chord_Lab.amxd
+
+// REQUIRED OBJECTS:
+// =================
+
+// 1. Node.js Script
+[node.script track_1_chord_lab/logic.js @autostart 1]
+// Inspector settings:
+//   - @autostart: 1
+//   - Script file: track_1_chord_lab/logic.js
+
+// 2. MIDI Inputs
+[notein]
+[prepend note_input]
+
+[ctlin]
+[prepend cc_input]
+
+// 3. Dictionary reference (NOT new dict!)
+[dict ---power_trio_brain]
+
+// 4. Routing
+[route dict sysex led note_out]
+
+// 5. Outputs
+[midiout]  // For APC64 display (SysEx)
+[noteout]  // For LED feedback
+[makenote 100 50]  // For LED timing
+
+// WIRING DIAGRAM:
+// ===============
+
+//              INPUTS
+//              ------
+//
+//    [notein]          [ctlin]
+//       |                 |
+//  [prepend note_input]  [prepend cc_input]
+//       |                 |
+//       +-----------------+
+//               |
+//       [node.script track_1_chord_lab/logic.js @autostart 1]
+//               |
+//               |
+//        OUTLET PROCESSING
+//        ----------------
+//               |
+//    [route dict sysex led note_out]
+//       |      |      |        |
+//       |      |      |        +---> [noteout] (LED feedback)
+//       |      |      |
+//       |      |      +---> [unpack 0 0 0]
+//       |      |               |  |  |
+//       |      |            [pack note velocity channel]
+//       |      |               |
+//       |      |            [makenote 100 50]
+//       |      |               |
+//       |      |            [noteout] (LED control with channel)
+//       |      |
+//       |      +---> [midiout] (APC64 display SysEx)
+//       |
+//       +---> [dict ---power_trio_brain]
+//               |
+//      (LEFT OUTLET - optional for future dict reads)
+//               |
+//        [prepend dict_response]
+//               |
+//        [node.script] LEFT INLET
+
+
+// PATCH NOTES:
+// ============
+// 1. The [dict ---power_trio_brain] must already exist (created by Global Brain)
+// 2. Dict response loop is OPTIONAL for Chord Lab (write-only currently)
+// 3. LED output can be simplified if APC64 protocol not needed
+// 4. SysEx output enables chord names on APC64 display
+
+// TESTING:
+// ========
+// 1. Load device
+// 2. Open Max Console
+// 3. Should see: "Chord Lab loaded. Listening for grid input (notes 36-75)."
+// 4. Press APC64 pad
+// 5. Should see chord info in console
+// 6. Inspect dict: clipboard::active_chord should update
+// 7. APC64 display should show chord name (if sysex wired)
+
+----------end_max5_patcher----------

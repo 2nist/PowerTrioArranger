@@ -9,6 +9,24 @@
  *
  * Legacy mode (backward compat):
  * - Pads 36-51: 16-step chord sequencer with paste/clear
+ *
+ * REQUIRED MAX PATCHER WIRING:
+ * 
+ * INPUTS (to node.script left inlet):
+ *   [r ---transport_tick] → [prepend transport_tick] → inlet (step counter 0-15)
+ *   [notein] → [prepend note_input] → inlet (pads 36-51, shift button 120)
+ *   [ctlin] → [prepend cc_input] → inlet (optional: for future parameters)
+ *
+ * OUTLETS (from node.script):
+ *   outlet → [route dict sysex led note_out]
+ *      |         |      |     |        |
+ *      |         |      |     |        └→ [noteout]
+ *      |         |      |     └→ [pack] → [noteout]
+ *      |         |      └→ [midiout]
+ *      |         └→ [dict ---power_trio_brain]
+ *      └→ CRITICAL: [dict] left outlet → [prepend dict_response] → inlet
+ *
+ * ⚠️  CRITICAL: Dict response loop is MANDATORY - script will hang without it!
  */
 
 const maxApi = require("max-api");
@@ -67,17 +85,37 @@ let progression = []; // Array of { chord_ref, duration_beats, slot_index }
 let pendingLockChord = null;
 let pendingRemoveSlot = null;
 
+// Wiring validation
+let dictResponseReceived = false;
+let wiringWarningShown = false;
+const DICT_RESPONSE_TIMEOUT = 2000; // 2 seconds
+
 function pasteChordToStep(step, chordData) {
   getSequencerBuffer();
   pendingPasteStep = step;
   pendingChordData = chordData;
 }
 
+function getSequencerBuffer() {
+  getSequencerBuffer();
+  
+  // Check if dict response loop is wired
+  if (!dictResponseReceived && !wiringWarningShown) {
+    setTimeout(() => {
+      if (!dictResponseReceived && !wiringWarningShown) {
+        wiringWarningShown = true;
+        maxApi.post("\n\u26a0\ufe0f  SEQUENCER WIRING ERROR:");
+        maxApi.post("   Dict response loop not wired! Script will hang.");
+        maxApi.post("   Required: [dict] left outlet → [prepend dict_response] → node.script inlet");
+        maxApi.post("   See AMXD_BUILD_INSTRUCTIONS.md for wiring diagram.\n");
+      }
+    }, DICT_RESPONSE_TIMEOUT);
+  }
+}
 function clearStep(step) {
   pendingClearStep = step;
   getSequencerBuffer();
 }
-
 function applyBufferResponse(bufferJson) {
   let buffer;
   try {
@@ -444,8 +482,18 @@ maxApi.addHandler("transport_tick", (step) => {
 maxApi.addHandler("init", () => {
   updateDurationLEDs();
   updateProgressionLEDs();
-  comms.updateDisplay(maxApi, "Sequencer", "Ready", "Select duration");
+  try {
+    comms.updateDisplay(maxApi, "Sequencer", "Ready", "Select duration");
+  } catch (e) {
+    maxApi.post("Note: APC64 display output not wired (optional)");
+  }
 });
+
+// Initialization: startup message
+maxApi.post("Sequencer loaded. Waiting for transport ticks and note input.");
+for (let i = 0; i < NUM_STEPS; i++) {
+  maxApi.outlet("note_out", HW.SEQUENCER_GRID_START + i, 0);
+}
 
 module.exports = {
   // Legacy functions

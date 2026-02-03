@@ -1,0 +1,76 @@
+----------begin_max5_patcher----------
+// Track 3: Global Brain - Max Patcher Template
+// Copy this into a new Max patcher, then save as Track_3_Global_Brain.amxd
+
+// REQUIRED OBJECTS:
+// =================
+
+// 1. Node.js Script
+[node.script shared/dict_init.js @autostart 1]
+// Inspector settings:
+//   - @autostart: 1
+//   - Script file: shared/dict_init.js
+
+// 2. Dictionary (THIS DEVICE CREATES IT!)
+[dict ---power_trio_brain]
+
+// 3. Routing
+[route dict]
+
+// WIRING DIAGRAM (MINIMAL):
+// =========================
+
+//    [node.script shared/dict_init.js @autostart 1]
+//               |
+//               | (outlet)
+//               |
+//         [route dict]
+//               |
+//               | (strips "dict" prefix)
+//               |
+//      [dict ---power_trio_brain]
+//
+//
+// IMPORTANT: NO LOADBANG -> INIT MESSAGE NEEDED!
+// Script self-initializes when @autostart 1 is set.
+
+
+// ALTERNATIVE WIRING (if @autostart won't work):
+// ==============================================
+
+//      [loadbang]
+//          |
+//    [message "script start"]
+//          |
+//    [node.script shared/dict_init.js]
+//          |
+//     [route dict]
+//          |
+//  [dict ---power_trio_brain]
+
+
+// PATCH NOTES:
+// ============
+// 1. This device MUST be loaded FIRST (creates the dictionary)
+// 2. Only ONE Global Brain device per Live Set
+// 3. Dict response loop NOT needed (init only writes, never reads)
+// 4. Script self-initializes - no manual init message required
+// 5. If script doesn't run: check @autostart or use loadbang method
+
+// TESTING:
+// ========
+// 1. Load device (should be first device loaded)
+// 2. Open Max Console (Window -> Max Console)
+// 3. Should see: "Power Trio Brain Initialized: Schema Loaded."
+// 4. Double-click [dict ---power_trio_brain] to inspect contents
+// 5. Should see keys: transport, clipboard, sequencer_buffer, progression, song_structure, rhythm_pulses
+// 6. Each key should have initialized data (not empty)
+
+// TROUBLESHOOTING:
+// ===============
+// - No console message: Check @autostart 1, or add loadbang method
+// - "Cannot find module": Add /Users/Matthew/PowerTrioArranger to Max search path
+// - "max-api error": Run: npm uninstall max-api in project root
+// - Dict empty: Click script object, check Inspector for errors
+
+----------end_max5_patcher----------

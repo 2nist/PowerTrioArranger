@@ -1,0 +1,110 @@
+----------begin_max5_patcher----------
+// Track 5: Bass Follower - Max Patcher Template
+// Copy this into a new Max patcher, then save as Track_5_Bass_Follower.amxd
+
+// REQUIRED OBJECTS:
+// =================
+
+// 1. Node.js Script
+[node.script track_5_bass/bass_follower.js @autostart 1]
+// Inspector settings:
+//   - @autostart: 1
+//   - Script file: track_5_bass/bass_follower.js
+
+// 2. Kick Trigger Input
+[r ---kick_pulse_global]
+[prepend kick_trigger]
+
+// 3. Dictionary reference
+[dict ---power_trio_brain]
+
+// 4. Response Loop (CRITICAL!)
+[prepend dict_response]
+
+// 5. Routing
+[route dict note_out]
+
+// 6. Bass Output
+[noteout]  // To bass synth/sampler
+
+// WIRING DIAGRAM:
+// ===============
+
+//              INPUTS
+//              ------
+//
+//  [r ---kick_pulse_global] (from Track 4 Bridge)
+//         |
+//  [prepend kick_trigger]
+//         |
+//         |
+//  [node.script track_5_bass/bass_follower.js @autostart 1]
+//         |
+//         |
+//    OUTLET PROCESSING
+//    ----------------
+//         |
+//  [route dict note_out]
+//      |         |
+//      |         +---> [noteout] (bass notes to synth)
+//      |
+//      +---> [dict ---power_trio_brain]
+//              |
+//     (LEFT OUTLET - CRITICAL!)
+//              |
+//       [prepend dict_response]
+//              |
+//              V
+//       [node.script] LEFT INLET
+//       (MUST CONNECT OR BASS WON'T PLAY!)
+//
+//
+//  CRITICAL RESPONSE LOOP:
+//  ======================
+//
+//        [node.script] outlet
+//               |
+//        [route dict note_out]
+//          |          |
+//          |          +-> [noteout]
+//          |
+//        [dict ---power_trio_brain]
+//          |              |
+//          |    (LEFT OUTLET)
+//          |              |
+//          |       [prepend dict_response]
+//          |              |
+//          |              V
+//          |       [node.script] LEFT INLET ⚠️
+//          |              
+//     (to other             
+//      stuff)              
+
+
+// PATCH NOTES:
+// ============
+// 1. Dict response loop is MANDATORY - bass won't play without it!
+// 2. Kick trigger input must be connected (from Track 4 Bridge)
+// 3. Script reads transport::current_chord on every kick
+// 4. Bass note is root of current chord in bass octave (C2 = 36)
+// 5. Without response loop, console shows "BASS FOLLOWER WIRING ERROR"
+
+// TESTING:
+// ========
+// 1. Load device AFTER Global Brain and Bridge
+// 2. Open Max Console
+// 3. Should see: "Bass Follower loaded. Listening for kick triggers from Track 4 Bridge."
+// 4. Play GrooveWanderer + Sequencer
+// 5. When kick plays -> bass note should play
+// 6. Bass should follow chord changes from sequencer
+// 7. NO "WIRING ERROR" should appear in console
+// 8. If error appears: Check dict response loop wiring!
+
+// TROUBLESHOOTING:
+// ===============
+// - Bass doesn't play: Check dict response loop first!
+// - No kick trigger: Verify Bridge is loaded and sending [send ---kick_pulse_global]
+// - Wrong notes: Check sequencer is running and transport::current_chord is updating
+// - Console error: Follow wiring instructions in error message
+
+----------end_max5_patcher----------
