@@ -1,15 +1,14 @@
 const assert = require('assert');
 const path = require('path');
+const proxyquire = require('proxyquire');
 const { createMock } = require('../helpers/mock_max_api');
 
 function run() {
     const mock = createMock();
-    const maxApiPath = require.resolve('max-api');
-    require.cache[maxApiPath] = { id: maxApiPath, filename: maxApiPath, loaded: true, exports: mock };
 
     const adapterPath = path.resolve(__dirname, '../../track_4_drums/m4l_adapter.js');
     delete require.cache[require.resolve(adapterPath)];
-    const adapter = require(adapterPath);
+    proxyquire(adapterPath, { 'max-api': mock });
 
     // Simulate incoming note that maps to kick (36)
     mock.trigger('note_in', 36);

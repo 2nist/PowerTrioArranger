@@ -1,18 +1,16 @@
 const assert = require('assert');
 const path = require('path');
-const Module = require('module');
+const proxyquire = require('proxyquire');
 const { createMock } = require('../helpers/mock_max_api');
 
 function run() {
     // Prepare mock max-api
     const mock = createMock();
-    const maxApiPath = require.resolve('max-api');
-    require.cache[maxApiPath] = { id: maxApiPath, filename: maxApiPath, loaded: true, exports: mock };
 
-    // Load the adapter (it will require max-api -> gets mock)
+    // Load the adapter with proxyquire, stubbing 'max-api'
     const adapterPath = path.resolve(__dirname, '../../track_5_bass/m4l_adapter.js');
     delete require.cache[require.resolve(adapterPath)];
-    const adapter = require(adapterPath);
+    proxyquire(adapterPath, { 'max-api': mock });
 
     // Simulate dict response with current_chord
     mock.trigger('dict_response', 'current_chord', 'C', 'maj', 60, 64, 67);
