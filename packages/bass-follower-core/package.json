@@ -1,0 +1,11 @@
+{
+  "name": "@2nist/bass-follower-core",
+  "version": "0.1.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "test": "node test/run.js",
+    "lint": "eslint . --ext .js"
+  },
+  "devDependencies": { "eslint": "^8.49.0" }
+}

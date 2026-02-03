@@ -1,0 +1,13 @@
+{
+  "name": "@2nist/apc64-comms",
+  "version": "0.1.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "test": "node test/run.js",
+    "lint": "eslint . --ext .js"
+  },
+  "devDependencies": {
+    "eslint": "^8.49.0"
+  }
+}
