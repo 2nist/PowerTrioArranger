@@ -5,3 +5,6 @@ node_modules/
 .env
 *.bak
 COMMIT_MSG.txt
+
+# Ignore PDF documentation files
+*.pdf
